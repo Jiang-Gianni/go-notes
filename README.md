@@ -36,6 +36,12 @@ Random Go notes
 	- [**Error type and value check** *(100 Go Mistakes #50 and #51)*](#error-type-and-value-check-100-go-mistakes-50-and-51)
 	- [**Exporting constant error**](#exporting-constant-error)
 	- [**Error from deferred function** *(100 Go Mistakes #54)*](#error-from-deferred-function-100-go-mistakes-54)
+	- [**Nil Channel** *(100 Go Mistakes #66)*](#nil-channel-100-go-mistakes-66)
+	- [**time.After memory leaks** *(100 Go Mistakes #76)*](#timeafter-memory-leaks-100-go-mistakes-76)
+	- [**JSON Marshal and Unmarshal** *(100 Go Mistakes #77)*](#json-marshal-and-unmarshal-100-go-mistakes-77)
+	- [**SQL Connection** *(100 Go Mistakes #78)*](#sql-connection-100-go-mistakes-78)
+	- [**Testing: parallel shuffle flags** *(100 Go Mistakes #84)*](#testing-parallel-shuffle-flags-100-go-mistakes-84)
+	- [**Reduce allocations** *(100 Go Mistakes #96)*](#reduce-allocations-100-go-mistakes-96)
 
 
 
@@ -98,8 +104,15 @@ func helloWorldHandler(w http.ResponseWriter, r *http.Request) {
 DefaultClient in http/net doesn't timeout
 
 ```go
-	client := http.Client{
-		Timeout: time.Second,
+	client := &http.Client{
+		Timeout: 5 * time.Second,
+		Transport: &http.Transport{
+			DialContext: (&net.Dialer{
+				Timeout: time.Second,
+			}).DialContext,
+			TLSHandshakeTimeout:   time.Second,
+			ResponseHeaderTimeout: time.Second,
+		},
 	}
 	res, err := client.Get("INSERT-URL")
 ```
@@ -281,6 +294,31 @@ pprof to profile the memory usage. Using `chi` [middleware](https://github.com/g
 `http://localhost:3000/debug/vars`
 
 `http://localhost:3000/debug/pprof`
+
+
+**/debug/pprof/profile** will activate CPU profiling (30 seconds duration with 10 ms rate sampling). After the duration a CPU profiler file is generated can can be downloaded and served locally with:
+
+```bash
+go tool pprof -http=:8000 profile
+```
+
+Use the following endpoint to change the duration: `http://localhost:3000/debug/pprof/profile?seconds=5`
+
+
+**debug/pprof/heap/?debug=0** will generate a heap profiling file `heap` that can be served locally with:
+
+```bash
+go tool pprof -http=:8000 heap
+```
+
+Refer to *100 Go Mistakes #98*
+
+```bash
+go tool pprof -noinlines http://localhost:3000/debug/pprof/allocs
+(pprof) top 10 -cum
+(pprof) list myFunction
+(pprof) web myFunction
+```
 
 
 ## [**pprof on performance**](https://www.youtube.com/watch?v=nok0aYiGiYA&t=5m25s)
@@ -795,4 +833,182 @@ func PrintHttpResponse(url string) (err error) {
 	fmt.Printf("%s\n", bodyText)
 	return nil
 }
+```
+
+
+
+## **Nil Channel** *(100 Go Mistakes #66)*
+
+Once a channel is closed and don't need to be read anymore, assign `nil` to it so that it can't be read in a `select` statement: if the channel is just closed then `zero-value, false` are read.
+
+```go
+	for ch1 != nil || ch2 != nil {
+		select {
+		case v, open := <-ch1:
+			if !open {
+				ch1 = nil
+				break
+			}
+			ch <- v
+		case v, open := <-ch2:
+			if !open {
+				ch2 = nil
+				break
+			}
+			ch <- v
+		}
+	}
+```
+
+
+## **time.After memory leaks** *(100 Go Mistakes #76)*
+
+
+```go
+func consumer(ch <-chan Event) {
+	for {
+		select {
+		case event := <-ch:
+			handle(event)
+		case <-time.After(time.Hour):
+			log.Println("warning: no messages received")
+		}
+	}
+}
+```
+
+For each loop a new time.Time channel is returned by `time.After`: this channel is closed only when the timeout expires which can cause memory leaks.
+
+A solution is to use instantiate a single `*time.Timer` with `time.NewTimer` and to use the `Reset` function:
+
+```go
+func consumer(ch <-chan Event) {
+	timer := time.NewTimer(time.Hour)
+	defer timer.Stop()
+	for {
+		timer.Reset(time.Hour)
+		select {
+		case event := <-ch:
+			handle(event)
+		case <-timer.C:
+			log.Println("warning: no messages received")
+		}
+	}
+}
+```
+
+
+## **JSON Marshal and Unmarshal** *(100 Go Mistakes #77)*
+
+```go
+type Event struct {
+	ID int
+	time.Time
+}
+```
+
+`time.Time` implements the `Marshaler` interface (which requires a `MarshalJSON() ([]byte, error)` function)
+
+`json.Marshal(event)` will ignore the `ID int` field and only return the time because the embedded `time.Time`'s `MarshalJSON` method has been promoted (the default behavior is ignored).
+
+Either assign a field name to `time.Time` (no embedded struct) or define the `MarshalJSON` implementation of `Event`.
+
+`time.Time` has *wall* (time of day) and *monotonic* (moves only forward) clocks. `json.Unmarshal` a `time.Time` field only returns the *wall* clock.
+
+The `time.Equal` function will ignore the *monotonic* clock
+
+```go
+event1.Time.Equal(event2.Time)
+```
+
+The `time.Truncate(0)` function will strip away the *monotonic* clock
+
+```go
+time.Now().Truncate(0)
+```
+
+
+
+## **SQL Connection** *(100 Go Mistakes #78)*
+
+From the `database/sql` package, for a given `sql.DB` struct:
+
+| Setter             | Default   | When to set               |
+| ------------------ | --------- | ------------------------- |
+| SetMaxOpenConns    | unlimited | database limits           |
+| SetMaxIdleConns    | 2         | avoid multiple reconnects |
+| SetConnMaxIdleTime | unlimited | handle burs periods       |
+| SetConnMaxLifetime | unlimited | load-balanced db server   |
+
+
+## **Testing: parallel shuffle flags** *(100 Go Mistakes #84)*
+
+Test execution order: sequential and then parallel
+
+`t.Parallel()` marks the test as parallel
+
+```go
+func TestFoo(t *testing.T) {
+	t.Parallel()
+	// ...
+}
+```
+
+To increase the number of maximum executing parallel tests for a given time (default `GOMAXPROCS`) use:
+
+```bash
+go test -parallel 16 .
+```
+
+The `shuffle` flag make sure that the tests are run in a random order.
+
+`-v` will print out the seed value number.
+
+```bash
+go test -shuffle=on -v .
+```
+
+Run the following to repeat the same order
+
+```bash
+go test -shuffle=YOUR_SEED_VALUE -v .
+```
+
+
+
+## **Reduce allocations** *(100 Go Mistakes #96)*
+
+
+* Prefere share down approach to prevent auto escape to the heap
+
+```go
+// Share down
+type Reader interface {
+	Read(p []byte) (n int, err error)
+}
+
+// Share up
+type Reader interface {
+	Read(n int) (p []byte, err error)
+}
+```
+
+
+* Use `string(yourByteSlice)` to query a `map[string]any`
+* Use `sync.Pool` to reuse already allocated memory
+
+
+```go
+	var pool = sync.Pool{
+		New: func() any {
+			return make([]byte, 1024)
+		},
+	}
+
+	write := func(w io.Writer) {
+		buffer := pool.Get().([]byte)
+		buffer = buffer[:0]
+		defer pool.Put(buffer)
+		//
+	}
 ```

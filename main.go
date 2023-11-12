@@ -2,20 +2,20 @@
 package main
 
 import (
-	"errors"
 	"fmt"
 	"io"
 	"log"
 	"net/http"
+	"time"
 )
 
 func main() {
-	err := Work()
-	if err != nil {
-		fmt.Println(err)
-		fmt.Println(errors.As(err, &MyError{}))
-		fmt.Println(errors.Is(err, ErrMy))
-	}
+
+}
+
+type Event struct {
+	ID int
+	time.Time
 }
 
 var ErrMy MyError = MyError{err: "my error"}
