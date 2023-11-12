@@ -1,0 +1,1709 @@
+
+
+<!DOCTYPE html>
+<html lang="en" data-layout="responsive" data-local="true">
+  <head>
+    
+    <script>
+      window.addEventListener('error', window.__err=function f(e){f.p=f.p||[];f.p.push(e)});
+    </script>
+    <script>
+      (function() {
+        const theme = document.cookie.match(/prefers-color-scheme=(light|dark|auto)/)?.[1]
+        if (theme) {
+          document.querySelector('html').setAttribute('data-theme', theme);
+        }
+      }())
+    </script>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    
+    <meta class="js-gtmID" data-gtmid="">
+    <link rel="shortcut icon" href="../../static/shared/icon/favicon.ico">
+    
+  
+    <meta name="robots" content="noindex">
+  
+
+    <link href="../../static/frontend/frontend.min.css%3Fversion=.css" rel="stylesheet">
+    
+    
+  <title>notes-golang command - github.com/Jiang-Gianni/notes-golang - Go Packages</title>
+
+    
+  <link href="../../static/frontend/unit/unit.min.css%3Fversion=.css" rel="stylesheet">
+  
+  <link href="../../static/frontend/unit/main/main.min.css%3Fversion=.css" rel="stylesheet">
+
+
+  </head>
+  <body>
+    
+    <script>
+      function loadScript(src, mod = true) {
+        let s = document.createElement('script');
+        s.src = src;
+        if (mod) {
+          s.type = 'module';
+          s.async = true;
+          s.defer = true
+        }
+        document.head.appendChild(s);
+      }
+      loadScript("/third_party/dialog-polyfill/dialog-polyfill.js", false)
+      loadScript("/static/frontend/frontend.js");
+    </script>
+    
+  <header class="go-Header go-Header--full js-siteHeader">
+    <div class="go-Header-inner go-Header-inner--dark">
+      <nav class="go-Header-nav">
+        <a href="http://localhost:7000/" class="js-headerLogo" data-gtmc="nav link"
+            data-test-id="go-header-logo-link" role="heading" aria-level="1">
+          <img class="go-Header-logo" src="../../static/shared/logo/go-white.svg" alt="Go">
+        </a>
+         <div class="skip-navigation-wrapper">
+            <a class="skip-to-content-link" aria-label="Skip to main content" href="notes-golang@v0.0.0.html#main-content"> Skip to Main Content </a>
+          </div>
+        <div class="go-Header-rightContent">
+          
+<div class="go-SearchForm js-searchForm">
+  <form
+    class="go-InputGroup go-ShortcutKey go-SearchForm-form"
+    action="http://localhost:7000/search"
+    data-shortcut="/"
+    data-shortcut-alt="search"
+    data-gtmc="search form"
+    aria-label="Search for a package"
+    role="search"
+  >
+    <input name="q" class="go-Input js-searchFocus" aria-label="Search for a package" type="search"
+        autocapitalize="off" autocomplete="off" autocorrect="off" spellcheck="false"
+        placeholder="Search packages"
+        value="" />
+    <input name="m" value="" hidden>
+    <button class="go-Button go-Button--inverted" aria-label="Submit search">
+      <img
+        class="go-Icon"
+        height="24"
+        width="24"
+        src="../../static/shared/icon/search_gm_grey_24dp.svg"
+        alt=""
+      />
+    </button>
+  </form>
+  <button class="go-SearchForm-expandSearch js-expandSearch" data-gtmc="nav button"
+      aria-label="Open search" data-test-id="expand-search">
+    <img class="go-Icon go-Icon--inverted" height="24" width="24"
+        src="../../static/shared/icon/search_gm_grey_24dp.svg" alt="">
+
+  </button>
+</div>
+
+          <ul class="go-Header-menu">
+            <li class="go-Header-menuItem">
+              <a class="js-desktop-menu-hover" href="notes-golang@v0.0.0.html#" data-gtmc="nav link">
+                Why Go
+                <img class="go-Icon" height="24" width="24" src="../../static/shared/icon/arrow_drop_down_gm_grey_24dp.svg" alt="submenu dropdown icon">
+              </a>
+              <ul class="go-Header-submenu go-Header-submenu--why js-desktop-submenu-hover" aria-label="submenu">
+                  <li class="go-Header-submenuItem">
+                    <div>
+                      <a href="https://go.dev/solutions#case-studies">
+                        </span>Case Studies</span>
+                      </a>
+                    </div>
+                    <p>Common problems companies solve with Go</p>
+                  </li>
+                  <li class="go-Header-submenuItem">
+                    <div>
+                      <a href="https://go.dev/solutions#use-cases">
+                        </span>Use Cases</span>
+                      </a>
+                    </div>
+                    <p>Stories about how and why companies use Go</p>
+                  </li>
+                  <li class="go-Header-submenuItem">
+                    <div>
+                      <a href="https://go.dev/security/policy/">
+                        </span>Security Policy</span>
+                      </a>
+                    </div>
+                    <p>How Go can help keep you secure by default</p>
+                  </li>
+              </ul>
+            </li>
+            <li class="go-Header-menuItem">
+              <a href="https://go.dev/learn/" data-gtmc="nav link">Learn</a>
+            </li>
+            <li class="go-Header-menuItem">
+              <a class="js-desktop-menu-hover" href="notes-golang@v0.0.0.html#" data-gtmc="nav link">
+                Docs
+                <img class="go-Icon" height="24" width="24" src="../../static/shared/icon/arrow_drop_down_gm_grey_24dp.svg" alt="submenu dropdown icon">
+              </a>
+              <ul class="go-Header-submenu go-Header-submenu--docs js-desktop-submenu-hover" aria-label="submenu">
+                <li class="go-Header-submenuItem">
+                  <div>
+                    <a href="https://go.dev/doc/effective_go">
+                      <span>Effective Go</span>
+                    </a>
+                  </div>
+                  <p>Tips for writing clear, performant, and idiomatic Go code</p>
+                </li>
+                <li class="go-Header-submenuItem">
+                  <div>
+                    <a href="https://go.dev/doc/">
+                      <span>Go User Manual</span>
+                    </a>
+                  </div>
+                  <p>A complete introduction to building software with Go</p>
+                </li>
+                <li class="go-Header-submenuItem">
+                  <div>
+                    <a href="https://pkg.go.dev/std">
+                      <span>Standard library</span>
+                    </a>
+                  </div>
+                  <p>Reference documentation for Go's standard library</p>
+                </li>
+                <li class="go-Header-submenuItem">
+                  <div>
+                    <a href="https://go.dev/doc/devel/release">
+                      <span>Release Notes</span>
+                    </a>
+                  </div>
+                  <p>Learn what's new in each Go release</p>
+                </li>
+              </ul>
+            </li>
+            <li class="go-Header-menuItem go-Header-menuItem--active">
+              <a href="http://localhost:7000/" data-gtmc="nav link">Packages</a>
+            </li>
+            <li class="go-Header-menuItem">
+              <a class="js-desktop-menu-hover" href="notes-golang@v0.0.0.html#" data-gtmc="nav link">
+                Community
+                <img class="go-Icon" height="24" width="24" src="../../static/shared/icon/arrow_drop_down_gm_grey_24dp.svg" alt="submenu dropdown icon">
+              </a>
+              <ul class="go-Header-submenu go-Header-submenu--community js-desktop-submenu-hover" aria-label="submenu">
+                <li class="go-Header-submenuItem">
+                  <div>
+                    <a href="https://go.dev/talks/">
+                      <span>Recorded Talks</span>
+                    </a>
+                  </div>
+                  <p>Videos from prior events</p>
+                </li>
+                <li class="go-Header-submenuItem">
+                  <div>
+                    <a href="https://www.meetup.com/pro/go">
+                      <span>Meetups</span>
+                      <i class="material-icons">
+                        <img class="go-Icon" height="24" width="24"
+                            src="../../static/shared/icon/launch_gm_grey_24dp.svg" alt="">
+                      </i>
+                    </a>
+                  </div>
+                  <p>Meet other local Go developers</p>
+                </li>
+                <li class="go-Header-submenuItem">
+                  <div>
+                    <a href="https://github.com/golang/go/wiki/Conferences">
+                      <span>Conferences</span>
+                      <i class="material-icons">
+                        <img class="go-Icon" height="24" width="24"
+                            src="../../static/shared/icon/launch_gm_grey_24dp.svg" alt="">
+                      </i>
+                    </a>
+                  </div>
+                  <p>Learn and network with Go developers from around the world</p>
+                </li>
+                <li class="go-Header-submenuItem">
+                  <div>
+                    <a href="https://go.dev/blog">
+                      <span>Go blog</span>
+                    </a>
+                  </div>
+                  <p>The Go project's official blog.</p>
+                </li>
+                <li class="go-Header-submenuItem">
+                  <div>
+                    <a href="https://go.dev/help">
+                      <span>Go project</span>
+                    </a>
+                  </div>
+                  <p>Get help and stay informed from Go</p>
+                </li>
+                <li class="go-Header-submenuItem">
+                  <div>
+                    Get connected
+                  </div>
+                  <p></p>
+                  <div class="go-Header-socialIcons">
+                      <a class="go-Header-socialIcon" aria-label="Get connected with google-groups (Opens in new window)" href="https://groups.google.com/g/golang-nuts" ><img src="../../static/shared/logo/social/google-groups.svg" /></a>
+                      <a class="go-Header-socialIcon" aria-label="Get connected with github (Opens in new window)" href="https://github.com/golang"><img src="../../static/shared/logo/social/github.svg" /></a>
+                      <a class="go-Header-socialIcon" aria-label="Get connected with twitter (Opens in new window)" href="https://twitter.com/golang"><img src="../../static/shared/logo/social/twitter.svg" /></a>
+                      <a class="go-Header-socialIcon" aria-label="Get connected with reddit (Opens in new window)" href="https://www.reddit.com/r/golang/"><img src="../../static/shared/logo/social/reddit.svg" /></a>
+                      <a class="go-Header-socialIcon" aria-label="Get connected with slack (Opens in new window)" href="https://invite.slack.golangbridge.org/"><img src="../../static/shared/logo/social/slack.svg" /></a>
+                      <a class="go-Header-socialIcon" aria-label="Get connected with stack-overflow (Opens in new window)" href="https://stackoverflow.com/collectives/go"><img src="../../static/shared/logo/social/stack-overflow.svg" /></a>
+                  </div>
+                </li>
+              </ul>
+            </li>
+          </ul>
+          <button class="go-Header-navOpen js-headerMenuButton go-Header-navOpen--white" data-gtmc="nav button" aria-label="Open navigation">
+          </button>
+        </div>
+      </nav>
+    </div>
+  </header>
+  <aside class="go-NavigationDrawer js-header">
+    <nav class="go-NavigationDrawer-nav">
+      <div class="go-NavigationDrawer-header">
+        <a href="https://go.dev/">
+          <img class="go-NavigationDrawer-logo" src="../../static/shared/logo/go-blue.svg" alt="Go.">
+        </a>
+      </div>
+      <ul class="go-NavigationDrawer-list">
+          <li class="go-NavigationDrawer-listItem js-mobile-subnav-trigger go-NavigationDrawer-hasSubnav">
+            <a href="notes-golang@v0.0.0.html#">
+              <span>Why Go</span>
+              <i class="material-icons">
+                <img class="go-Icon" height="24" width="24"
+                  src="../../static/shared/icon/navigate_next_gm_grey_24dp.svg" alt="">
+              </i>
+            </a>
+
+            <div class="go-NavigationDrawer go-NavigationDrawer-submenuItem">
+              <div class="go-NavigationDrawer-nav">
+                <div class="go-NavigationDrawer-header">
+                  <a href="notes-golang@v0.0.0.html#">
+                    <i class="material-icons">
+                      <img class="go-Icon" height="24" width="24"
+                        src="../../static/shared/icon/navigate_before_gm_grey_24dp.svg" alt="">
+                      </i>
+                      Why Go
+                  </a>
+                </div>
+                <ul class="go-NavigationDrawer-list">
+                  <li class="go-NavigationDrawer-listItem">
+                    <a href="https://go.dev/solutions#case-studies">
+                      Case Studies
+                    </a>
+                  </li>
+                  <li class="go-NavigationDrawer-listItem">
+                    <a href="https://go.dev/solutions#use-cases">
+                      Use Cases
+                    </a>
+                  </li>
+                  <li class="go-NavigationDrawer-listItem">
+                    <a href="https://go.dev/security/policy/">
+                      Security Policy
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </li>
+          <li class="go-NavigationDrawer-listItem">
+            <a href="https://go.dev/learn/">Learn</a>
+          </li>
+          <li class="go-NavigationDrawer-listItem js-mobile-subnav-trigger go-NavigationDrawer-hasSubnav">
+            <a href="notes-golang@v0.0.0.html#">
+              <span>Docs</span>
+              <i class="material-icons">
+                <img class="go-Icon" height="24" width="24"
+                  src="../../static/shared/icon/navigate_next_gm_grey_24dp.svg" alt="">
+              </i>
+            </a>
+
+            <div class="go-NavigationDrawer go-NavigationDrawer-submenuItem">
+              <div class="go-NavigationDrawer-nav">
+                <div class="go-NavigationDrawer-header">
+                  <a href="notes-golang@v0.0.0.html#"><i class="material-icons">
+                    <img class="go-Icon" height="24" width="24"
+                      src="../../static/shared/icon/navigate_before_gm_grey_24dp.svg" alt="">
+                    </i>
+                    Docs
+                  </a>
+                </div>
+                <ul class="go-NavigationDrawer-list">
+                  <li class="go-NavigationDrawer-listItem">
+                    <a href="https://go.dev/doc/effective_go">
+                      Effective Go
+                    </a>
+                  </li>
+                  <li class="go-NavigationDrawer-listItem">
+                    <a href="https://go.dev/doc/">
+                      Go User Manual
+                    </a>
+                  </li>
+                  <li class="go-NavigationDrawer-listItem">
+                    <a href="https://pkg.go.dev/std">
+                      Standard library
+                    </a>
+                  </li>
+                  <li class="go-NavigationDrawer-listItem">
+                    <a href="https://go.dev/doc/devel/release">
+                      Release Notes
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </li>
+          <li class="go-NavigationDrawer-listItem go-NavigationDrawer-listItem--active">
+            <a href="http://localhost:7000/">Packages</a>
+          </li>
+          <li class="go-NavigationDrawer-listItem js-mobile-subnav-trigger go-NavigationDrawer-hasSubnav">
+            <a href="notes-golang@v0.0.0.html#">
+              <span>Community</span>
+              <i class="material-icons">
+                <img class="go-Icon" height="24" width="24"
+                  src="../../static/shared/icon/navigate_next_gm_grey_24dp.svg" alt="">
+              </i>
+            </a>
+            <div class="go-NavigationDrawer go-NavigationDrawer-submenuItem">
+              <div class="go-NavigationDrawer-nav">
+                <div class="go-NavigationDrawer-header">
+                  <a href="notes-golang@v0.0.0.html#">
+                    <i class="material-icons">
+                      <img class="go-Icon" height="24" width="24"
+                        src="../../static/shared/icon/navigate_before_gm_grey_24dp.svg" alt="">
+                    </i>
+                    Community
+                  </a>
+                </div>
+                <ul class="go-NavigationDrawer-list">
+                  <li class="go-NavigationDrawer-listItem">
+                    <a href="https://go.dev/talks/">
+                      Recorded Talks
+                    </a>
+                  </li>
+                  <li class="go-NavigationDrawer-listItem">
+                    <a href="https://www.meetup.com/pro/go">
+                      Meetups
+                      <i class="material-icons">
+                      <img class="go-Icon" height="24" width="24"
+                          src="../../static/shared/icon/launch_gm_grey_24dp.svg" alt="">
+                      </i>
+                    </a>
+                  </li>
+                  <li class="go-NavigationDrawer-listItem">
+                    <a href="https://github.com/golang/go/wiki/Conferences">
+                      Conferences
+                      <i class="material-icons">
+                        <img class="go-Icon" height="24" width="24" src="../../static/shared/icon/launch_gm_grey_24dp.svg" alt="">
+                      </i>
+                    </a>
+                  </li>
+                  <li class="go-NavigationDrawer-listItem">
+                    <a href="https://go.dev/blog">
+                      Go blog
+                    </a>
+                  </li>
+                  <li class="go-NavigationDrawer-listItem">
+                    <a href="https://go.dev/help">
+                      Go project
+                    </a>
+                  </li>
+                  <li class="go-NavigationDrawer-listItem">
+                    <div>Get connected</div>
+                    <div class="go-Header-socialIcons">
+                        <a class="go-Header-socialIcon" href="https://groups.google.com/g/golang-nuts"><img src="../../static/shared/logo/social/google-groups.svg" /></a>
+                        <a class="go-Header-socialIcon" href="https://github.com/golang"><img src="../../static/shared/logo/social/github.svg" /></a>
+                        <a class="go-Header-socialIcon" href="https://twitter.com/golang"><img src="../../static/shared/logo/social/twitter.svg" /></a>
+                        <a class="go-Header-socialIcon" href="https://www.reddit.com/r/golang/"><img src="../../static/shared/logo/social/reddit.svg" /></a>
+                        <a class="go-Header-socialIcon" href="https://invite.slack.golangbridge.org/"><img src="../../static/shared/logo/social/slack.svg" /></a>
+                        <a class="go-Header-socialIcon" href="https://stackoverflow.com/collectives/go"><img src="../../static/shared/logo/social/stack-overflow.svg" /></a>
+                    </div>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </li>
+      </ul>
+    </nav>
+  </aside>
+  <div class="go-NavigationDrawer-scrim js-scrim" role="presentation"></div>
+
+    
+  <main class="go-Main" id="main-content">
+    <div class="go-Main-banner" role="alert"></div>
+    <header class="go-Main-header js-mainHeader">
+  
+  
+  <nav class="go-Main-headerBreadcrumb go-Breadcrumb" aria-label="Breadcrumb" data-test-id="UnitHeader-breadcrumb">
+    <ol>
+      
+        
+          <li data-test-id="UnitHeader-breadcrumbItem">
+            <a href="http://localhost:7000/" data-gtmc="breadcrumb link">Discover Packages</a>
+          </li>
+        
+        <li>
+          <a href="notes-golang@v0.0.0.html" data-gtmc="breadcrumb link" aria-current="location"
+              data-test-id="UnitHeader-breadcrumbCurrent">
+            github.com/Jiang-Gianni/notes-golang
+          </a>
+          
+            <button
+              class="go-Button go-Button--inline go-Clipboard js-clipboard"
+              title="Copy path to clipboard.&#10;&#10;github.com/Jiang-Gianni/notes-golang"
+              aria-label="Copy Path to Clipboard"
+              data-to-copy="github.com/Jiang-Gianni/notes-golang"
+              data-gtmc="breadcrumbs button"
+            >
+              <img
+                class="go-Icon go-Icon--accented"
+                height="24"
+                width="24"
+                src="../../static/shared/icon/content_copy_gm_grey_24dp.svg"
+                alt=""
+              >
+            </button>
+          
+        
+      </li>
+    </ol>
+  </nav>
+
+  <div class="go-Main-headerContent">
+    
+  <div class="go-Main-headerTitle js-stickyHeader">
+    <a class="go-Main-headerLogo" href="http://localhost:7000/" aria-hidden="true" tabindex="-1" data-gtmc="header link" aria-label="Link to Go Homepage">
+      <img height="78" width="207" src="../../static/shared/logo/go-blue.svg" alt="Go">
+    </a>
+    <h1 class="UnitHeader-titleHeading" data-test-id="UnitHeader-title">notes-golang</h1>
+    
+      <span class="go-Chip go-Chip--inverted">command</span>
+    
+      <span class="go-Chip go-Chip--inverted">module</span>
+    
+    
+      
+        <button
+          class="go-Button go-Button--inline go-Clipboard js-clipboard"
+          title="Copy path to clipboard.&#10;&#10;github.com/Jiang-Gianni/notes-golang"
+          aria-label="Copy Path to Clipboard"
+          data-to-copy="github.com/Jiang-Gianni/notes-golang"
+          data-gtmc="title button"
+          tabindex="-1"
+        >
+          <img
+            class="go-Icon go-Icon--accented"
+            height="24"
+            width="24"
+            src="../../static/shared/icon/content_copy_gm_grey_24dp.svg"
+            alt=""
+          />
+        </button>
+      
+    
+  </div>
+
+    
+  <div class="go-Main-headerDetails">
+    
+      
+  <span class="go-Main-headerDetailItem" data-test-id="UnitHeader-version">
+    <a href="http://localhost:7000/github.com/Jiang-Gianni/notes-golang@v0.0.0?tab=versions" aria-label="Version: v0.0.0" 
+    data-gtmc="header link" aria-describedby="version-description">
+      <span class="go-textSubtle" aria-hidden="true">Version: </span>
+        v0.0.0
+    </a>
+    <div class="screen-reader-only" id="version-description" hidden>
+      Opens a new window with list of versions in this module.
+    </div>
+    
+    <span class="DetailsHeader-badge--unknown" data-test-id="UnitHeader-minorVersionBanner">
+      <span class="go-Chip DetailsHeader-span--latest">Latest</span>
+      <span class="go-Chip DetailsHeader-span--notAtLatest">
+        Latest
+        
+  <details class="go-Tooltip js-tooltip" data-gtmc="tooltip">
+    <summary>
+      <img class="go-Icon go-Icon--inverted" height="24" width="24" src="../../static/shared/icon/alert_gm_grey_24dp.svg" alt="Warning">
+    </summary>
+    <p>This package is not in the latest version of its module.</p>
+  </details>
+
+      </span>
+      <a href="notes-golang.html" aria-label="Go to Latest Version" data-gtmc="header link">
+        <span class="go-Chip go-Chip--alert DetailsHeader-span--goToLatest">Go to latest</span>
+      </a>
+    </span>
+  </span>
+
+      
+  <span class="go-Main-headerDetailItem" data-test-id="UnitHeader-commitTime">
+    Published: Nov 11, 2023
+  </span>
+
+      
+  <span class="go-Main-headerDetailItem" data-test-id="UnitHeader-licenses">
+    License: 
+      <span>None detected</span>
+      <a href="http://localhost:7000/license-policy" class="Disclaimer-link" data-gtmc="info link" 
+      aria-describedby="license-description">
+        <em>not legal advice</em>
+      </a>
+    
+  </span>
+  <div class="screen-reader-only" id="license-description" hidden>
+    Opens a new window with license information.
+  </div>
+
+      
+        
+  <span class="go-Main-headerDetailItem" data-test-id="UnitHeader-imports">
+    <a href="notes-golang@v0.0.0%3Ftab=imports.html" aria-label="Imports: 0"
+        data-gtmc="header link" aria-describedby="imports-description">
+      <span class="go-textSubtle">Imports: </span>0
+    </a>
+  </span>
+  <div class="screen-reader-only" id="imports-description" hidden>
+    Opens a new window with list of imports.
+  </div>
+
+        
+  <span class="go-Main-headerDetailItem" data-test-id="UnitHeader-importedby">
+    <a href="http://localhost:7000/github.com/Jiang-Gianni/notes-golang@v0.0.0?tab=importedby" aria-label="Imported By: 0"
+        data-gtmc="header link" aria-describedby="importedby-description">
+       <span class="go-textSubtle">Imported by: </span>0
+    </a>
+  </span>
+  <div class="screen-reader-only" id="importedby-description" hidden>
+    Opens a new window with list of known importers.
+  </div>
+
+      
+    
+  </div>
+  
+  <div class="UnitHeader-overflowContainer">
+    <svg class="UnitHeader-overflowImage" xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24">
+      <path d="M0 0h24v24H0z" fill="none"/>
+      <path d="M12 8c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm0 2c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm0 6c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z"/>
+    </svg>
+    <select class="UnitHeader-overflowSelect js-selectNav" tabindex="-1">
+      <option value="/">Main</option>
+      <option value="/github.com/Jiang-Gianni/notes-golang@v0.0.0?tab=versions">
+        Versions
+      </option>
+      <option value="/github.com/Jiang-Gianni/notes-golang@v0.0.0?tab=licenses">
+        Licenses
+      </option>
+      
+        <option value="/github.com/Jiang-Gianni/notes-golang@v0.0.0?tab=imports">
+          Imports
+        </option>
+        <option value="/github.com/Jiang-Gianni/notes-golang@v0.0.0?tab=importedby">
+          Imported By
+        </option>
+      
+    </select>
+  </div>
+
+
+  </div>
+
+</header>
+    <aside class="go-Main-aside  js-mainAside">
+  
+  <div class="UnitMeta">
+    <h2 class="go-textLabel">Details</h2>
+    
+  <ul class="UnitMeta-details">
+    <li>
+      <details class="go-Tooltip js-tooltip" data-gtmc="tooltip">
+        <summary class="go-textSubtle">
+          
+  <img class="go-Icon go-Icon--accented"src="../../static/shared/icon/check_circle_gm_grey_24dp.svg" alt="checked"height="24" width="24">
+
+          Valid <a href="http://localhost:7000/files/home/gianni/Desktop/Git/notes-golang/github.com/Jiang-Gianni/notes-golang//go.mod" target="_blank" rel="noopener">go.mod</a> file
+          <img class="go-Icon" src="../../static/shared/icon/help_gm_grey_24dp.svg" alt="" height="24" width="24">
+        </summary>
+        <p>
+          The Go module system was introduced in Go 1.11 and is the official dependency management
+          solution for Go.
+        </p>
+      </details>
+    </li>
+    <li>
+      <details class="go-Tooltip js-tooltip" data-gtmc="tooltip">
+        <summary class="go-textSubtle">
+          
+  <img class="go-Icon go-Icon--accented"src="../../static/shared/icon/check_circle_gm_grey_24dp.svg" alt="checked"height="24" width="24">
+
+          Redistributable license
+          <img class="go-Icon" src="../../static/shared/icon/help_gm_grey_24dp.svg" alt="" height="24" width="24">
+        </summary>
+        <p>
+          Redistributable licenses place minimal restrictions on how software can be used,
+          modified, and redistributed.
+        </p>
+      </details>
+    </li>
+    <li>
+      <details class="go-Tooltip js-tooltip" data-gtmc="tooltip">
+        <summary class="go-textSubtle">
+          
+  <img class="go-Icon go-Icon--accented"src="../../static/shared/icon/check_circle_gm_grey_24dp.svg" alt="checked"height="24" width="24">
+
+          Tagged version
+          <img class="go-Icon" src="../../static/shared/icon/help_gm_grey_24dp.svg" alt="" height="24" width="24">
+        </summary>
+        <p>Modules with tagged versions give importers more predictable builds.</p>
+      </details>
+    </li>
+    <li>
+      <details class="go-Tooltip js-tooltip" data-gtmc="tooltip">
+        <summary class="go-textSubtle">
+          
+  <img class="go-Icon"src="../../static/shared/icon/cancel_gm_grey_24dp.svg" alt="unchecked"height="24" width="24">
+
+          Stable version
+          <img class="go-Icon" src="../../static/shared/icon/help_gm_grey_24dp.svg" alt="" height="24" width="24">
+        </summary>
+        <p>When a project reaches major version v1 it is considered stable.</p>
+      </details>
+    </li>
+    <li class="UnitMeta-detailsLearn">
+      <a href="http://localhost:7000/about#best-practices" data-gtmc="meta link">Learn more about best practices</a>
+    </li>
+  </ul>
+
+    <h2 class="go-textLabel">Repository</h2>
+    <div class="UnitMeta-repo">
+      
+        <a href="http://localhost:7000/files/home/gianni/Desktop/Git/notes-golang/github.com/Jiang-Gianni/notes-golang/" title="/files/home/gianni/Desktop/Git/notes-golang/github.com/Jiang-Gianni/notes-golang/" target="_blank" rel="noopener">
+          /files/home/gianni/Desktop/Git/notes-golang/github.com/Jiang-Gianni/notes-golang/
+        </a>
+      
+    </div>
+    
+  </div>
+
+</aside>
+    <nav class="go-Main-nav go-Main-nav--sticky js-mainNav" aria-label="Outline">
+  <div class="go-Main-navDesktop">
+    
+  <div class="UnitOutline-jumpTo">
+    <button class="UnitOutline-jumpToInput go-ShortcutKey js-jumpToInput"
+        aria-controls="jump-to-modal"
+        aria-label="Open Jump to Identifier"
+        data-shortcut="f"
+        data-shortcut-alt="find"
+        data-test-id="jump-to-button" data-gtmc="outline button">
+      Jump to ...
+    </button>
+  </div>
+  <ul class="go-Tree js-tree" role="tree" aria-label="Outline">
+    
+      <li class="js-readmeOutline">
+        <a href="notes-golang@v0.0.0.html#section-readme" data-gtmc="outline link">
+          README
+        </a>
+        
+  <ul id="readme-outline">
+    
+      <li>
+        <a href="notes-golang@v0.0.0.html#readme-shutdown-https-www-youtube-com-watch-v-yf1qsfkdgaq-list-pl4wjsmupjdf8wplgjqy4nlvwvwipv7c3b-t-25m45s" data-gtmc="readme outline link">
+          ShutDown
+        </a>
+         
+      </li>
+    
+      <li>
+        <a href="notes-golang@v0.0.0.html#readme-graceful-shutdown-https-www-youtube-com-watch-v-9q1rmuevhag-t-5m50s" data-gtmc="readme outline link">
+          Graceful Shutdown
+        </a>
+         
+      </li>
+    
+      <li>
+        <a href="notes-golang@v0.0.0.html#readme-request-context-https-www-youtube-com-watch-v-yf1qsfkdgaq-list-pl4wjsmupjdf8wplgjqy4nlvwvwipv7c3b-t-31m50s" data-gtmc="readme outline link">
+          Request Context
+        </a>
+         
+      </li>
+    
+      <li>
+        <a href="notes-golang@v0.0.0.html#readme-client-timeouts-https-www-youtube-com-watch-v-yf1qsfkdgaq-list-pl4wjsmupjdf8wplgjqy4nlvwvwipv7c3b-t-9m" data-gtmc="readme outline link">
+          Client timeouts
+        </a>
+         
+      </li>
+    
+      <li>
+        <a href="notes-golang@v0.0.0.html#readme-main-abstraction-https-www-youtube-com-watch-v-iv0wrvb31pg-t-10m40s" data-gtmc="readme outline link">
+          Main abstraction
+        </a>
+         
+      </li>
+    
+      <li>
+        <a href="notes-golang@v0.0.0.html#readme-configuration-https-www-youtube-com-watch-v-iv0wrvb31pg-t-15m" data-gtmc="readme outline link">
+          Configuration
+        </a>
+         
+      </li>
+    
+      <li>
+        <a href="notes-golang@v0.0.0.html#readme-functional-options-https-www-youtube-com-watch-v-jz1zsulrye0-t-32m30s" data-gtmc="readme outline link">
+          Functional Options
+        </a>
+         
+      </li>
+    
+      <li>
+        <a href="notes-golang@v0.0.0.html#readme-functional-programming-https-www-youtube-com-watch-v-nxydu5aptjq-t-9m20s" data-gtmc="readme outline link">
+          Functional Programming
+        </a>
+         
+      </li>
+    
+      <li>
+        <a href="notes-golang@v0.0.0.html#readme-goroutine" data-gtmc="readme outline link">
+          Goroutine
+        </a>
+         
+      </li>
+    
+      <li>
+        <a href="notes-golang@v0.0.0.html#readme-ldflags-https-www-youtube-com-watch-v-iv0wrvb31pg-t-23m10s" data-gtmc="readme outline link">
+          ldflags
+        </a>
+         
+      </li>
+    
+      <li>
+        <a href="notes-golang@v0.0.0.html#readme-pprof-on-web-server-https-www-youtube-com-watch-v-iv0wrvb31pg-t-28m" data-gtmc="readme outline link">
+          pprof on web server
+        </a>
+         
+      </li>
+    
+      <li>
+        <a href="notes-golang@v0.0.0.html#readme-pprof-on-performance-https-www-youtube-com-watch-v-nok0ayigiya-t-5m25s" data-gtmc="readme outline link">
+          pprof on performance
+        </a>
+         
+      </li>
+    
+      <li>
+        <a href="notes-golang@v0.0.0.html#readme-gcflags-https-www-youtube-com-watch-v-oe-vm7kev-e-t11m25s" data-gtmc="readme outline link">
+          gcflags
+        </a>
+         
+      </li>
+    
+      <li>
+        <a href="notes-golang@v0.0.0.html#readme-server-timeouts-https-www-youtube-com-watch-v-yf1qsfkdgaq-list-pl4wjsmupjdf8wplgjqy4nlvwvwipv7c3b-t-13m40s" data-gtmc="readme outline link">
+          Server timeouts
+        </a>
+         
+      </li>
+    
+      <li>
+        <a href="notes-golang@v0.0.0.html#readme-custom-logger-https-www-youtube-com-watch-v-wxkeqxvxs3w-t-18m" data-gtmc="readme outline link">
+          Custom Logger
+        </a>
+         
+      </li>
+    
+      <li>
+        <a href="notes-golang@v0.0.0.html#readme-testing-handlers-https-www-youtube-com-watch-v-wxkeqxvxs3w-t-29m" data-gtmc="readme outline link">
+          Testing Handlers
+        </a>
+         
+      </li>
+    
+      <li>
+        <a href="notes-golang@v0.0.0.html#readme-transaction-and-mutex-https-www-youtube-com-watch-v-gtsszbs-xb8-t-34m30s" data-gtmc="readme outline link">
+          Transaction and Mutex
+        </a>
+         
+      </li>
+    
+      <li>
+        <a href="notes-golang@v0.0.0.html#readme-line-of-sight-https-www-youtube-com-watch-v-zdkhq9xo4oy-t-9m" data-gtmc="readme outline link">
+          Line of Sight
+        </a>
+         
+      </li>
+    
+      <li>
+        <a href="notes-golang@v0.0.0.html#readme-headers-against-csrf-https-www-youtube-com-watch-v-wvde0m8ueeq-t-12m30s" data-gtmc="readme outline link">
+          Headers against CSRF
+        </a>
+         
+      </li>
+    
+      <li>
+        <a href="notes-golang@v0.0.0.html#readme-reflect-to-assign-value-https-www-youtube-com-watch-v-hz6d7rzqj6q-t-6m15s" data-gtmc="readme outline link">
+          Reflect to assign value
+        </a>
+         
+      </li>
+    
+      <li>
+        <a href="notes-golang@v0.0.0.html#readme-worker-pool-semaphore-pattern-https-www-youtube-com-watch-v-5zxahh5tjqq-t-31m30s" data-gtmc="readme outline link">
+          Worker Pool Semaphore pattern
+        </a>
+         
+      </li>
+    
+      <li>
+        <a href="notes-golang@v0.0.0.html#readme-init-order-execution-100-go-mistakes-3" data-gtmc="readme outline link">
+          Init order execution (100 Go Mistakes #3)
+        </a>
+         
+      </li>
+    
+      <li>
+        <a href="notes-golang@v0.0.0.html#readme-generics-constraints-100-go-mistakes-9" data-gtmc="readme outline link">
+          Generics Constraints (100 Go Mistakes #9)
+        </a>
+         
+      </li>
+    
+      <li>
+        <a href="notes-golang@v0.0.0.html#readme-godoc" data-gtmc="readme outline link">
+          Godoc
+        </a>
+         
+      </li>
+    
+      <li>
+        <a href="notes-golang@v0.0.0.html#readme-other-resources" data-gtmc="readme outline link">
+          Other resources
+        </a>
+        
+          <ul>
+            
+              <li>
+                <a href="notes-golang@v0.0.0.html#readme-50-shades-of-go-https-golang50shad-es" data-gtmc="readme outline link">
+                  50 Shades of Go
+                </a>
+                 
+              </li>
+             
+          </ul>
+         
+      </li>
+     
+  </ul>
+
+      </li>
+    
+    
+      <li>
+        <a href="notes-golang@v0.0.0.html#section-documentation" data-gtmc="outline link">
+          Documentation
+        </a>
+        
+      </li>
+    
+    
+      <li>
+        <a href="notes-golang@v0.0.0.html#section-sourcefiles" data-gtmc="outline link">
+          Source Files
+        </a>
+      </li>
+    
+    
+      <li>
+        <a href="notes-golang@v0.0.0.html#section-directories" data-gtmc="outline link">
+          Directories
+        </a>
+      </li>
+    
+  </ul>
+
+  </div>
+  <div class="go-Main-navMobile js-mainNavMobile">
+    <label class="go-Label">
+      <select class="go-Select">
+        
+          <option selected disabled>README</option>
+        
+      </select>
+    </label>
+  </div>
+</nav>
+    <article class="go-Main-article js-mainContent">
+  <div class="UnitDetails" data-test-id="UnitDetails" style="display: block;">
+    <div class="UnitDetails-content js-unitDetailsContent" data-test-id="UnitDetails-content">
+      
+        
+  <div class="UnitReadme UnitReadme--expanded js-readme">
+    <h2 class="UnitReadme-title" id="section-readme">
+      <img class="go-Icon" height="24" width="24" src="../../static/shared/icon/chrome_reader_mode_gm_grey_24dp.svg" alt="">
+      README
+      <a class="UnitReadme-idLink" href="notes-golang@v0.0.0.html#section-readme" aria-label="Go to Readme">¶</a>
+    </h2>
+    
+      <div class="UnitReadme-content" data-test-id="Unit-readmeContent">
+        <div class="Overview-readmeContent js-readmeContent"><h3 class="h1" id="readme-go-notes"><strong>Go Notes</strong></h3>
+<p>Random Go notes</p>
+<ul>
+<li><a href="notes-golang@v0.0.0.html#readme-go-notes" rel="nofollow"><strong>Go Notes</strong></a>
+<ul>
+<li><a href="notes-golang@v0.0.0.html#readme-shutdown" rel="nofollow"><strong>ShutDown</strong></a></li>
+<li><a href="notes-golang@v0.0.0.html#readme-graceful-shutdown" rel="nofollow"><strong>Graceful Shutdown</strong></a></li>
+<li><a href="notes-golang@v0.0.0.html#readme-request-context" rel="nofollow"><strong>Request Context</strong></a></li>
+<li><a href="notes-golang@v0.0.0.html#readme-client-timeouts" rel="nofollow"><strong>Client timeouts</strong></a></li>
+<li><a href="notes-golang@v0.0.0.html#readme-main-abstraction" rel="nofollow"><strong>Main abstraction</strong></a></li>
+<li><a href="notes-golang@v0.0.0.html#readme-configuration" rel="nofollow"><strong>Configuration</strong></a></li>
+<li><a href="notes-golang@v0.0.0.html#readme-functional-options" rel="nofollow"><strong>Functional Options</strong></a></li>
+<li><a href="notes-golang@v0.0.0.html#readme-functional-programming" rel="nofollow"><strong>Functional Programming</strong></a></li>
+<li><a href="notes-golang@v0.0.0.html#readme-goroutine" rel="nofollow"><strong>Goroutine</strong></a></li>
+<li><a href="notes-golang@v0.0.0.html#readme-ldflags" rel="nofollow"><strong>ldflags</strong></a></li>
+<li><a href="notes-golang@v0.0.0.html#readme-pprof-on-web-server" rel="nofollow"><strong>pprof on web server</strong></a></li>
+<li><a href="notes-golang@v0.0.0.html#readme-pprof-on-performance" rel="nofollow"><strong>pprof on performance</strong></a></li>
+<li><a href="notes-golang@v0.0.0.html#readme-gcflags" rel="nofollow"><strong>gcflags</strong></a></li>
+<li><a href="notes-golang@v0.0.0.html#readme-server-timeouts" rel="nofollow"><strong>Server timeouts</strong></a></li>
+<li><a href="notes-golang@v0.0.0.html#readme-custom-logger" rel="nofollow"><strong>Custom Logger</strong></a></li>
+<li><a href="notes-golang@v0.0.0.html#readme-testing-handlers" rel="nofollow"><strong>Testing Handlers</strong></a></li>
+<li><a href="notes-golang@v0.0.0.html#readme-transaction-and-mutex" rel="nofollow"><strong>Transaction and Mutex</strong></a></li>
+<li><a href="notes-golang@v0.0.0.html#readme-line-of-sight" rel="nofollow"><strong>Line of Sight</strong></a></li>
+<li><a href="notes-golang@v0.0.0.html#readme-headers-against-csrf" rel="nofollow"><strong>Headers against CSRF</strong></a></li>
+<li><a href="notes-golang@v0.0.0.html#readme-reflect-to-assign-value" rel="nofollow"><strong>Reflect to assign value</strong></a></li>
+<li><a href="notes-golang@v0.0.0.html#readme-worker-pool-semaphore-pattern" rel="nofollow"><strong>Worker Pool Semaphore pattern</strong></a></li>
+<li><a href="notes-golang@v0.0.0.html#readme-init-order-execution-100-go-mistakes-3" rel="nofollow"><strong>Init order execution</strong> <em>(100 Go Mistakes #3)</em></a></li>
+<li><a href="notes-golang@v0.0.0.html#readme-generics-constraints-100-go-mistakes-9" rel="nofollow"><strong>Generics Constraints</strong> <em>(100 Go Mistakes #9)</em></a></li>
+<li><a href="notes-golang@v0.0.0.html#readme-godoc" rel="nofollow"><strong>Godoc</strong></a></li>
+<li><a href="notes-golang@v0.0.0.html#readme-other-resources" rel="nofollow"><strong>Other resources</strong></a></li>
+</ul>
+</li>
+</ul>
+<h4 class="h2" id="readme-shutdown-https-www-youtube-com-watch-v-yf1qsfkdgaq-list-pl4wjsmupjdf8wplgjqy4nlvwvwipv7c3b-t-25m45s"><a href="https://www.youtube.com/watch?v=YF1qSfkDGAQ&amp;list=PL4WJSMupJdF8WPlGJQy4nlvWVWIPv7c3B&amp;t=25m45s" rel="nofollow"><strong>ShutDown</strong></a></h4>
+<p><code>defer</code> calls are not executed on interrupt / cancel, so use a signal channel to listen to the signal</p>
+<pre><code>	sigChn := make(chan os.Signal)
+	signal.Notify(sigChn, os.Interrupt, syscall.SIGTERM)
+
+	defer func() {
+		fmt.Println(&#34;done&#34;)
+	}()
+
+	timeout := time.NewTimer(3 * time.Second)
+	select {
+	case &lt;-timeout.C:
+	case &lt;-sigChn:
+	}
+</code></pre>
+<h4 class="h2" id="readme-graceful-shutdown-https-www-youtube-com-watch-v-9q1rmuevhag-t-5m50s"><a href="https://www.youtube.com/watch?v=9Q1RMueVHAg&amp;t=5m50s" rel="nofollow"><strong>Graceful Shutdown</strong></a></h4>
+<pre><code>func GracefulShutdown(ctx context.Context, server *http.Server) error {
+	sigChn := make(chan os.Signal, 1)
+	signal.Notify(sigChn, os.Interrupt, syscall.SIGTERM)
+	&lt;-sigChn
+	timeout := time.Duration(5*time.Millisecond) * time.Second
+	ctx, cancel := context.WithTimeout(ctx, timeout)
+	defer cancel()
+	return server.Shutdown(ctx)
+}
+</code></pre>
+<h4 class="h2" id="readme-request-context-https-www-youtube-com-watch-v-yf1qsfkdgaq-list-pl4wjsmupjdf8wplgjqy4nlvwvwipv7c3b-t-31m50s"><a href="https://www.youtube.com/watch?v=YF1qSfkDGAQ&amp;list=PL4WJSMupJdF8WPlGJQy4nlvWVWIPv7c3B&amp;t=31m50s" rel="nofollow"><strong>Request Context</strong></a></h4>
+<p>If the request gets interrupted then the request&#39;s Context gets closed. Useful to interrupt long processing without wasting resources.</p>
+<pre><code>func helloWorldHandler(w http.ResponseWriter, r *http.Request) {
+	timer := time.NewTimer(time.Second * 3)
+	select {
+	case &lt;-timer.C:
+		log.Println(&#34;Hello World&#34;)
+	case &lt;-r.Context().Done():
+		log.Println(&#34;Cancelled&#34;)
+		return
+	}
+}
+</code></pre>
+<h4 class="h2" id="readme-client-timeouts-https-www-youtube-com-watch-v-yf1qsfkdgaq-list-pl4wjsmupjdf8wplgjqy4nlvwvwipv7c3b-t-9m"><a href="https://www.youtube.com/watch?v=YF1qSfkDGAQ&amp;list=PL4WJSMupJdF8WPlGJQy4nlvWVWIPv7c3B&amp;t=9m" rel="nofollow"><strong>Client timeouts</strong></a></h4>
+<p>DefaultClient in http/net doesn&#39;t timeout</p>
+<pre><code>	client := http.Client{
+		Timeout: time.Second,
+	}
+	res, err := client.Get(&#34;INSERT-URL&#34;)
+</code></pre>
+<h4 class="h2" id="readme-main-abstraction-https-www-youtube-com-watch-v-iv0wrvb31pg-t-10m40s"><a href="https://www.youtube.com/watch?v=IV0wrVb31Pg&amp;t=10m40s" rel="nofollow"><strong>Main abstraction</strong></a></h4>
+<p>Create a <code>run</code> function that handles all the initial settings and returns an error in case of failure (avoid multiple repeated error handling).</p>
+<pre><code>func main() {
+	if err := run(); err != nil {
+		log.Println(&#34;error :&#34;, err)
+		os.Exit(1)
+	}
+}
+</code></pre>
+<h4 class="h2" id="readme-configuration-https-www-youtube-com-watch-v-iv0wrvb31pg-t-15m"><a href="https://www.youtube.com/watch?v=IV0wrVb31Pg&amp;t=15m" rel="nofollow"><strong>Configuration</strong></a></h4>
+<p>Put all the configurations in one place and define some default values.</p>
+<p>To make sure that the right ones are being used when the server starts print out the configuration (no sensible data)</p>
+<pre><code>type Configuration struct {
+	Web struct {
+		APIHost         string
+		ReadTimeout     time.Duration
+		WriteTimeout    time.Duration
+		ShutdownTimeout time.Duration
+	}
+}
+</code></pre>
+<h4 class="h2" id="readme-functional-options-https-www-youtube-com-watch-v-jz1zsulrye0-t-32m30s"><a href="https://www.youtube.com/watch?v=jZ1ZsULRyE0&amp;t=32m30s" rel="nofollow"><strong>Functional Options</strong></a></h4>
+<pre><code>type Server struct {
+	tls     bool
+	timeout int
+}
+
+type option func(*Server)
+
+func tls(val bool) option {
+	return func(s *Server) {
+		s.tls = val
+	}
+}
+
+func timeout(ts int) option {
+	return func(s *Server) {
+		s.timeout = ts
+	}
+}
+
+func NewServer(opts ...option) (*Server, error) {
+	// Default Server
+	s := &amp;Server{
+		tls:     false,
+		timeout: 10,
+	}
+	for _, opt := range opts {
+		opt(s)
+	}
+	return s, nil
+}
+</code></pre>
+<h4 class="h2" id="readme-functional-programming-https-www-youtube-com-watch-v-nxydu5aptjq-t-9m20s"><a href="https://www.youtube.com/watch?v=nxydu5aPtjQ&amp;t=9m20s" rel="nofollow"><strong>Functional Programming</strong></a></h4>
+<p>By returning a function it is possible to declare variables that only are bound to that function&#39;s instance, sort of like a private state.</p>
+<pre><code>func Accumulator() func(int) int {
+	var acc int
+	return func(i int) int {
+		acc += i
+		return acc
+	}
+}
+</code></pre>
+<pre><code>func Factorial() (f func(int) int) {
+	cache := map[int]int{}
+	return func(i int) int {
+		if r, ok := cache[i]; ok {
+			return r
+		}
+		switch {
+		case i &lt; 0:
+			panic(i)
+		case i == 0:
+			return 1
+		default:
+			cache[i] = i * f(i-1)
+			return cache[i]
+		}
+	}
+}
+</code></pre>
+<pre><code>func myHandler() http.HandlerFunc {
+	var myHandlerCounter = 0
+	type request struct {
+		Name string
+	}
+	type response struct {
+		Greeting string `json:&#34;greeting&#34;`
+	}
+	var init sync.Once
+	return func(w http.ResponseWriter, r *http.Request) {
+		init.Do(func() {
+			// init your stuff only once
+		})
+		myHandlerCounter++
+		fmt.Fprintf(w, &#34;myHandlerCounter:%d&#34;, myHandlerCounter)
+	}
+}
+</code></pre>
+<h4 class="h2" id="readme-goroutine"><strong>Goroutine</strong></h4>
+<p><strong>Never use a goroutine (or any resource) without knowing how to release it</strong></p>
+<h4 class="h2" id="readme-ldflags-https-www-youtube-com-watch-v-iv0wrvb31pg-t-23m10s"><a href="https://www.youtube.com/watch?v=IV0wrVb31Pg&amp;t=23m10s" rel="nofollow"><strong>ldflags</strong></a></h4>
+<p>If there is a global variable in a package (example <code>environment</code>)</p>
+<pre><code>package main
+
+import (
+	&#34;fmt&#34;
+)
+
+var environment = &#34;DEV&#34;
+
+func main() {
+	fmt.Println(environment)
+}
+</code></pre>
+<p>it is possible to override the value during the build using <code>ldflags</code>.</p>
+<pre><code>go build -ldflags=&#34;-X &#39;main.environment=TEST&#39;&#34; main.go
+</code></pre>
+<p>Useful to print out the build version at the start of the server</p>
+<pre><code>go build -ldflags=&#34;-X &#39;main.version=${GIT_COMMIT}&#39;&#34; main.go
+</code></pre>
+<h4 class="h2" id="readme-pprof-on-web-server-https-www-youtube-com-watch-v-iv0wrvb31pg-t-28m"><a href="https://www.youtube.com/watch?v=IV0wrVb31Pg&amp;t=28m" rel="nofollow"><strong>pprof on web server</strong></a></h4>
+<p>pprof to profile the memory usage. Using <code>chi</code> <a href="https://github.com/go-chi/chi/raw/master/middleware/profiler.go" rel="nofollow">middleware</a>:</p>
+<pre><code>	r := chi.NewRouter()
+	r.Mount(&#34;/debug&#34;, middleware.Profiler())
+	http.ListenAndServe(&#34;:3000&#34;, r)
+</code></pre>
+<p><code>http://localhost:3000/debug/vars</code></p>
+<p><code>http://localhost:3000/debug/pprof</code></p>
+<h4 class="h2" id="readme-pprof-on-performance-https-www-youtube-com-watch-v-nok0ayigiya-t-5m25s"><a href="https://www.youtube.com/watch?v=nok0aYiGiYA&amp;t=5m25s" rel="nofollow"><strong>pprof on performance</strong></a></h4>
+<pre><code>go get github.com/pkg/profile
+</code></pre>
+<pre><code>package main
+
+import (
+	&#34;fmt&#34;
+
+	&#34;github.com/pkg/profile&#34;
+)
+
+func main() {
+	defer profile.Start(profile.MemProfile, profile.ProfilePath(&#34;.&#34;)).Stop()
+	var slice []int
+	for i := 0; i &lt; 1000; i++ {
+		slice = append(slice, i)
+	}
+	fmt.Println(slice)
+}
+</code></pre>
+<p>It creates a <code>mem.pprof</code> file which can be analyzed on a local server by running:</p>
+<pre><code>go tool pprof -http=:8000 mem.pprof
+</code></pre>
+<p>If <code>profile.TraceProfile</code> then a <code>trace.out</code> file is generated which can be analyzed on a local server by running:</p>
+<pre><code>go tool trace trace.out
+</code></pre>
+<h4 class="h2" id="readme-gcflags-https-www-youtube-com-watch-v-oe-vm7kev-e-t11m25s"><a href="https://www.youtube.com/watch?v=oE_vm7KeV_E&amp;t11m25s" rel="nofollow"><strong>gcflags</strong></a></h4>
+<pre><code># If a variable `escapes to heap` then it cause allocations
+go build -gcflags=&#39;-m -m&#39; main.go
+</code></pre>
+<pre><code># can tell if we are indexing an out of bound value of a slice
+# ./main.go:13:19: Found IsInBounds
+go build -gcflags=-d=ssa/check_bce/debug=1 main.go
+</code></pre>
+<h4 class="h2" id="readme-server-timeouts-https-www-youtube-com-watch-v-yf1qsfkdgaq-list-pl4wjsmupjdf8wplgjqy4nlvwvwipv7c3b-t-13m40s"><a href="https://www.youtube.com/watch?v=YF1qSfkDGAQ&amp;list=PL4WJSMupJdF8WPlGJQy4nlvWVWIPv7c3B&amp;t=13m40s" rel="nofollow"><strong>Server timeouts</strong></a></h4>
+<p>ListenAndServe in net/http doesn&#39;t timeout</p>
+<pre><code>	http.HandleFunc(&#34;/&#34;, helloWorldHandler)
+	server := &amp;http.Server{
+		Addr:         &#34;:3000&#34;,
+		ReadTimeout:  time.Second,
+		WriteTimeout: time.Second,
+		IdleTimeout:  time.Second,
+	}
+
+	if err := server.ListenAndServe(); err != nil {
+		log.Fatal(err)
+	}
+</code></pre>
+<p><code>ReadHeaderTimeout: time.Second,</code> can be added too</p>
+<h4 class="h2" id="readme-custom-logger-https-www-youtube-com-watch-v-wxkeqxvxs3w-t-18m"><a href="https://www.youtube.com/watch?v=wxkEQxvxs3w&amp;t=18m" rel="nofollow"><strong>Custom Logger</strong></a></h4>
+<p>Use a custom logger: with <code>log.Lshortfile</code> the file name and line will be displayed</p>
+<pre><code>logger := log.New(os.Stdout, &#34;yourPrefix &#34;, log.LstdFlags|log.Lshortfile)
+</code></pre>
+<h4 class="h2" id="readme-testing-handlers-https-www-youtube-com-watch-v-wxkeqxvxs3w-t-29m"><a href="https://www.youtube.com/watch?v=wxkEQxvxs3w&amp;t=29m" rel="nofollow"><strong>Testing Handlers</strong></a></h4>
+<p>Use <code>*httptest.ResponseRecorder</code> from <code>net/http/httptest</code> and call the handler passing <code>httptest.NewRecorder</code> and <code>httptest.NewRequest</code></p>
+<h4 class="h2" id="readme-transaction-and-mutex-https-www-youtube-com-watch-v-gtsszbs-xb8-t-34m30s"><a href="https://www.youtube.com/watch?v=GtsSzbs-xb8&amp;t=34m30s" rel="nofollow"><strong>Transaction and Mutex</strong></a></h4>
+<pre><code>func (s *data) advance(v value){
+	s.mu.Lock()
+	defer s.mu.Unlock()
+	s.a = s.nextA(v)
+	s.b = s.nextB(v)
+}
+</code></pre>
+<p>If <code>nextB</code> panics then the state of <code>s</code> stays corrupted because of <code>nextA</code> so one solution is something like:</p>
+<pre><code>func (s *data) advance(v value){
+	s.startTransaction()
+	defer s.endTransaction()
+	s.a = s.nextA(v)
+	s.b = s.nextB(v)
+	s.commitTransaction()
+}
+</code></pre>
+<p>where:</p>
+<ul>
+<li><code>startTransaction</code> locks the mutex and saves the state of the data</li>
+<li><code>commitTransaction</code> sets a flag to true</li>
+<li><code>endTransaction</code> unlocks the mutex and checks the flag, if false then it reverse the state of the data</li>
+</ul>
+<h4 class="h2" id="readme-line-of-sight-https-www-youtube-com-watch-v-zdkhq9xo4oy-t-9m"><a href="https://www.youtube.com/watch?v=zdKHq9Xo4OY&amp;t=9m" rel="nofollow"><strong>Line of Sight</strong></a></h4>
+<ul>
+<li>Avoid <code>else</code> and nesting</li>
+<li>Return early</li>
+<li>Wrap in functions to make the code more readable</li>
+</ul>
+<p>Instead of</p>
+<pre><code>	if err != nil {
+		if strings.Contains(err.Error(), &#34;special case&#34;) {
+			return fmt.Errorf(&#34;Special error&#34;)
+		} else {
+			return fmt.Errorf(&#34;Generic error&#34;)
+		}
+	}
+	return nil
+</code></pre>
+<p>use</p>
+<pre><code>	if err != nil &amp;&amp; strings.Contains(err.Error(), &#34;special case&#34;) {
+		return fmt.Errorf(&#34;Special error&#34;)
+	}
+	if err != nil {
+		return fmt.Errorf(&#34;Generic error&#34;)
+	}
+	return nil
+</code></pre>
+<h4 class="h2" id="readme-headers-against-csrf-https-www-youtube-com-watch-v-wvde0m8ueeq-t-12m30s"><a href="https://www.youtube.com/watch?v=wvdE0M8UEEQ&amp;t=12m30s" rel="nofollow"><strong>Headers against CSRF</strong></a></h4>
+<pre><code>func Allowed(r http.Request) bool {
+	site := r.Header.Get(&#34;sec-fetch-site&#34;)
+	mode := r.Header.Get(&#34;sec-fetch-mode&#34;)
+	// Same site or direct url or not supported by browser
+	if site == &#34;&#34; || site == &#34;none&#34; || site == &#34;same-site&#34; || site == &#34;same-origin&#34; {
+		return true
+	}
+	// Cross site
+	if mode == &#34;navigate&#34; &amp;&amp; r.Method == http.MethodGet {
+		return true
+	}
+	return false
+}
+</code></pre>
+<h4 class="h2" id="readme-reflect-to-assign-value-https-www-youtube-com-watch-v-hz6d7rzqj6q-t-6m15s"><a href="https://www.youtube.com/watch?v=hz6d7rzqJ6Q&amp;t=6m15s" rel="nofollow"><strong>Reflect to assign value</strong></a></h4>
+<p>It is possible to scan a struct and replace the value of the fields based on struct tags (<a href="https://www.youtube.com/watch?v=hz6d7rzqJ6Q&amp;t=6m15s" rel="nofollow">11m 20s</a>)</p>
+<h4 class="h2" id="readme-worker-pool-semaphore-pattern-https-www-youtube-com-watch-v-5zxahh5tjqq-t-31m30s"><a href="https://www.youtube.com/watch?v=5zXAHh5tJqQ&amp;t=31m30s" rel="nofollow"><strong>Worker Pool Semaphore pattern</strong></a></h4>
+<p>Only one goroutine is blocked at time, which is the one waiting for the signal on the semaphore channel:</p>
+<pre><code>func main() {
+	var limit = 2
+	hugeSlice := []string{
+		&#34;task 1&#34;,
+		&#34;task 2&#34;,
+		&#34;task 3&#34;,
+		&#34;task 4&#34;,
+	}
+	sem := make(chan struct{}, limit)
+	for _, task := range hugeSlice {
+		sem &lt;- struct{}{}
+		go func(task string) {
+			// perform task
+			fmt.Println(task)
+			&lt;-sem
+		}(task)
+	}
+	for n := limit; n &gt; 0; n-- {
+		sem &lt;- struct{}{}
+	}
+}
+</code></pre>
+<h4 class="h2" id="readme-init-order-execution-100-go-mistakes-3"><strong>Init order execution</strong> <em>(100 Go Mistakes #3)</em></h4>
+<pre><code>package main
+
+import &#34;fmt&#34;
+
+// Executed first
+var a = func() int {
+	fmt.Println(&#34;var&#34;)
+	return 0
+}()
+
+// Executed second
+func init() {
+	fmt.Println(&#34;init&#34;)
+}
+
+// Executed last
+func main() {
+	fmt.Println(&#34;main&#34;)
+}
+</code></pre>
+<ul>
+<li>The lowest packages init functions / variables of the import dependency tree are executed / evaluated first</li>
+<li>Multiple init functions can be defined on the same package: the execution order is based on the alphabetical order of the filenames and declaration order (in case of multiple inits in the same file)</li>
+</ul>
+<p>A bit tricky, init?</p>
+<h4 class="h2" id="readme-generics-constraints-100-go-mistakes-9"><strong>Generics Constraints</strong> <em>(100 Go Mistakes #9)</em></h4>
+<pre><code>type customConstraint interface {
+	~int | ~string
+}
+
+func getKeys[K customConstraint, V any](m map[K]V) []V {
+	keys := make([]V, len(m))
+	i := 0
+	for k := range m {
+		keys[i] = m[k]
+		i++
+	}
+	return keys
+}
+</code></pre>
+<ul>
+<li>| is the union operator</li>
+<li>~int and ~string include all the types whose underlying type is an int or a string</li>
+</ul>
+<h4 class="h2" id="readme-godoc"><strong>Godoc</strong></h4>
+<p>Use <code>// Deprecated: yourComment</code> comment above the function / variable to mark them as deprecated</p>
+<pre><code>go install -v golang.org/x/tools/cmd/godoc@latest
+</code></pre>
+<pre><code>godoc -http=:7000
+</code></pre>
+<p>This spins up a localhost server on port 7000 serving the standard library documentation and the current project</p>
+<pre><code>wget -r -np -N -E -p -k http://localhost:7000/pkg/
+</code></pre>
+<p>This will download all the assets (html, css, js, images) served in the localhost godoc server</p>
+<h4 class="h2" id="readme-other-resources"><strong>Other resources</strong></h4>
+<ul>
+<li>
+<h5 class="h3" id="readme-50-shades-of-go-https-golang50shad-es"><a href="https://golang50shad.es/" rel="nofollow">50 Shades of Go</a></h5>
+</li>
+</ul>
+</div>
+      </div>
+      <button class="UnitReadme-expandLink js-readmeExpand"
+          data-test-id="readme-expand" data-gtmc="readme button"
+          aria-label="Expand Readme">Expand ▾</button>
+      <button class="UnitReadme-collapseLink js-readmeCollapse"
+          data-test-id="readme-collapse" data-gtmc="readme button"
+          aria-label="Expand Readme">Collapse ▴</button>
+    
+  </div>
+
+      
+      
+        
+          
+  <div class="UnitDoc">
+    <h2 class="UnitDoc-title" id="section-documentation">
+      <img class="go-Icon" height="24" width="24" src="../../static/shared/icon/code_gm_grey_24dp.svg" alt="">
+      Documentation
+      <a class="UnitDoc-idLink" href="notes-golang@v0.0.0.html#section-documentation" aria-label="Go to Documentation">¶</a>
+    </h2>
+    
+  
+    
+  
+
+    <div class="Documentation js-documentation">
+      
+        <div class="UnitDoc-emptySection">
+          <img width="1200" height="945" src="../../static/shared/gopher/airplane-1200x945.svg" alt="The Go Gopher"/>
+          <p>There is no documentation for this package.</p>
+        </div>
+      
+    </div>
+  </div>
+
+        
+      
+      
+        
+  <div class="UnitFiles js-unitFiles">
+    <h2 class="UnitFiles-title" id="section-sourcefiles">
+      <img class="go-Icon" height="24" width="24" src="../../static/shared/icon/insert_drive_file_gm_grey_24dp.svg" alt="">
+      Source Files
+      <a class="UnitFiles-idLink" href="notes-golang@v0.0.0.html#section-sourcefiles" aria-label="Go to Source Files">¶</a>
+    </h2>
+    <div class="UnitFiles-titleLink">
+      <a href="http://localhost:7000/files/home/gianni/Desktop/Git/notes-golang/github.com/Jiang-Gianni/notes-golang/" target="_blank" rel="noopener">View all Source files</a>
+    </div>
+    <div>
+      <ul class="UnitFiles-fileList"><li>
+            <a href="http://localhost:7000/files/home/gianni/Desktop/Git/notes-golang/github.com/Jiang-Gianni/notes-golang/main.go" target="_blank" rel="noopener" title="main.go">main.go</a>
+          </li></ul>
+    </div>
+  </div>
+
+      
+      
+        
+  <div class="UnitDirectories js-unitDirectories">
+    <h2 class="UnitDirectories-title" id="section-directories">
+      <img class="go-Icon" height="24" width="24" src="../../static/shared/icon/folder_gm_grey_24dp.svg" alt="">
+      Directories
+      <a class="UnitDirectories-idLink" href="notes-golang@v0.0.0.html#section-directories" aria-label="Go to Directories">¶</a>
+    </h2>
+    <div class="UnitDirectories-toggles">
+      <div class="UnitDirectories-toggleButtons">
+        <button class="js-showInternalDirectories" data-test-id="internal-directories-toggle"
+            data-gtmc="directories button" aria-label="Show Internal Directories">
+          Show internal
+        </button>
+        <button class="js-expandAllDirectories" data-test-id="directories-toggle"
+            data-gtmc="directories button" aria-label="Expand All Directories">
+          Expand all
+        </button>
+      </div>
+    </div>
+    <table class="UnitDirectories-table UnitDirectories-table--tree js-expandableTable"
+          data-test-id="UnitDirectories-table">
+      <tr class="UnitDirectories-tableHeader UnitDirectories-tableHeader--tree">
+        <th>Path</th>
+        <th class="UnitDirectories-desktopSynopsis">Synopsis</th>
+      </tr>
+      
+          
+  
+  <tr
+      class="">
+    <td data-id="arst" data-aria-owns="">
+      <div class="UnitDirectories-pathCell">
+        <div><a href="notes-golang@v0.0.0/arst.html">arst</a>
+            
+          </div>
+          <div class="UnitDirectories-mobileSynopsis">My Arst Package is here</div>
+        </div>
+      </td>
+      <td class="UnitDirectories-desktopSynopsis">My Arst Package is here</td></tr></tr>
+
+      
+    </table>
+  </div>
+
+      
+    </div>
+  </div>
+  <div id="showInternal-description" hidden> Click to show internal directories. </div>
+  <div id="hideInternal-description" hidden> Click to hide internal directories. </div>
+</article>
+    <footer class="go-Main-footer"></footer>
+  </main>
+
+    
+  <footer class="go-Footer">
+    
+    <div class="go-Footer-links">
+      <div class="go-Footer-linkColumn">
+        <a href="https://go.dev/solutions" class="go-Footer-link go-Footer-link--primary"
+            data-gtmc="footer link">
+          Why Go
+        </a>
+        <a href="https://go.dev/solutions#use-cases" class="go-Footer-link"
+            data-gtmc="footer link">
+          Use Cases
+        </a>
+        <a href="https://go.dev/solutions#case-studies" class="go-Footer-link"
+            data-gtmc="footer link">
+          Case Studies
+        </a>
+      </div>
+      <div class="go-Footer-linkColumn">
+        <a href="https://learn.go.dev/" class="go-Footer-link go-Footer-link--primary"
+            data-gtmc="footer link">
+          Get Started
+        </a>
+        <a href="https://play.golang.org" class="go-Footer-link" data-gtmc="footer link">
+          Playground
+        </a>
+        <a href="https://tour.golang.org" class="go-Footer-link" data-gtmc="footer link">
+          Tour
+        </a>
+        <a href="https://stackoverflow.com/questions/tagged/go?tab=Newest" class="go-Footer-link"
+            data-gtmc="footer link">
+          Stack Overflow
+        </a>
+        <a href="https://go.dev/help" class="go-Footer-link"
+            data-gtmc="footer link">
+          Help
+        </a>
+      </div>
+      <div class="go-Footer-linkColumn">
+        <a href="https://pkg.go.dev" class="go-Footer-link go-Footer-link--primary"
+            data-gtmc="footer link">
+          Packages
+        </a>
+        <a href="http://localhost:7000/std" class="go-Footer-link" data-gtmc="footer link">
+          Standard Library
+        </a>
+        <a href="http://localhost:7000/golang.org/x" class="go-Footer-link" data-gtmc="footer link">
+          Sub-repositories
+        </a>
+        <a href="https://pkg.go.dev/about" class="go-Footer-link" data-gtmc="footer link">
+          About Go Packages
+        </a>
+      </div>
+      <div class="go-Footer-linkColumn">
+        <a href="https://go.dev/project" class="go-Footer-link go-Footer-link--primary"
+            data-gtmc="footer link">
+          About
+        </a>
+        <a href="https://go.dev/dl/" class="go-Footer-link" data-gtmc="footer link">Download</a>
+        <a href="https://go.dev/blog" class="go-Footer-link" data-gtmc="footer link">Blog</a>
+        <a href="https://github.com/golang/go/issues" class="go-Footer-link" data-gtmc="footer link">
+          Issue Tracker
+        </a>
+        <a href="https://go.dev/doc/devel/release.html" class="go-Footer-link"
+            data-gtmc="footer link">
+          Release Notes
+        </a>
+        <a href="https://blog.golang.org/go-brand" class="go-Footer-link" data-gtmc="footer link">
+          Brand Guidelines
+        </a>
+        <a href="https://go.dev/conduct" class="go-Footer-link" data-gtmc="footer link">
+          Code of Conduct
+        </a>
+      </div>
+      <div class="go-Footer-linkColumn">
+        <a href="https://www.twitter.com/golang" class="go-Footer-link go-Footer-link--primary"
+            data-gtmc="footer link">
+          Connect
+        </a>
+        <a href="https://www.twitter.com/golang" class="go-Footer-link" data-gtmc="footer link">
+          Twitter
+        </a>
+        <a href="https://github.com/golang" class="go-Footer-link" data-gtmc="footer link">GitHub</a>
+        <a href="https://invite.slack.golangbridge.org/" class="go-Footer-link"
+            data-gtmc="footer link">
+          Slack
+        </a>
+        <a href="https://reddit.com/r/golang" class="go-Footer-link" data-gtmc="footer link">
+          r/golang
+        </a>
+        <a href="https://www.meetup.com/pro/go" class="go-Footer-link" data-gtmc="footer link">
+          Meetup
+        </a>
+        <a href="https://golangweekly.com/" class="go-Footer-link" data-gtmc="footer link">
+          Golang Weekly
+        </a>
+      </div>
+    </div>
+    <div class="go-Footer-bottom">
+      <img class="go-Footer-gopher"  width="1431" height="901"
+          src="../../static/shared/gopher/pilot-bust-1431x901.svg" alt="Gopher in flight goggles">
+      <ul class="go-Footer-listRow">
+        <li class="go-Footer-listItem">
+          <a href="https://go.dev/copyright" data-gtmc="footer link">Copyright</a>
+        </li>
+        <li class="go-Footer-listItem">
+          <a href="https://go.dev/tos" data-gtmc="footer link">Terms of Service</a>
+        </li>
+        <li class="go-Footer-listItem">
+          <a href="http://www.google.com/intl/en/policies/privacy/" data-gtmc="footer link"
+              target="_blank" rel="noopener">
+            Privacy Policy
+          </a>
+        </li>
+        <li class="go-Footer-listItem">
+          <a href="https://go.dev/s/pkgsite-feedback" target="_blank" rel="noopener"
+              data-gtmc="footer link">
+            Report an Issue
+          </a>
+        </li>
+        <li class="go-Footer-listItem">
+          <button class="go-Button go-Button--text go-Footer-toggleTheme js-toggleTheme" aria-label="Theme Toggle">
+            <img data-value="auto" class="go-Icon go-Icon--inverted" height="24" width="24" src="../../static/shared/icon/brightness_6_gm_grey_24dp.svg" alt="System theme">
+            <img data-value="dark" class="go-Icon go-Icon--inverted" height="24" width="24" src="../../static/shared/icon/brightness_2_gm_grey_24dp.svg" alt="Dark theme">
+            <img data-value="light" class="go-Icon go-Icon--inverted" height="24" width="24" src="../../static/shared/icon/light_mode_gm_grey_24dp.svg" alt="Light theme">
+            <p> Theme Toggle </p>
+          </button>
+        </li>
+        <li class="go-Footer-listItem">
+          <button class="go-Button go-Button--text go-Footer-keyboard js-openShortcuts" aria-label="Shorcuts Modal">
+            <img class="go-Icon go-Icon--inverted" height="24" width="24" src="../../static/shared/icon/keyboard_grey_24dp.svg" alt="">
+            <p> Shortcuts Modal </p>
+          </button>
+        </li>
+      </ul>
+      <a class="go-Footer-googleLogo" href="https://google.com" target="_blank"rel="noopener"
+          data-gtmc="footer link">
+        <img class="go-Footer-googleLogoImg" height="24" width="72"
+            src="../../static/shared/logo/google-white.svg" alt="Google logo">
+      </a>
+    </div>
+  </footer>
+
+    
+  <dialog id="jump-to-modal" class="JumpDialog go-Modal go-Modal--md js-modal">
+    <form method="dialog" data-gmtc="jump to form" aria-label="Jump to Identifier">
+      <div class="Dialog-title go-Modal-header">
+        <h2>Jump to</h2>
+        <button
+          class="go-Button go-Button--inline"
+          type="button"
+          data-modal-close
+          data-gtmc="modal button"
+          aria-label="Close"
+        >
+          <img
+            class="go-Icon"
+            height="24"
+            width="24"
+            src="../../static/shared/icon/close_gm_grey_24dp.svg"
+            alt=""
+          />
+        </button>
+      </div>
+      <div class="JumpDialog-filter">
+        <input class="JumpDialog-input go-Input" autocomplete="off" type="text">
+      </div>
+      <div class="JumpDialog-body go-Modal-body">
+        <div class="JumpDialog-list"></div>
+      </div>
+      <div class="go-Modal-actions">
+        <button class="go-Button" data-test-id="close-dialog">Close</button>
+      </div>
+    </form>
+  </dialog>
+
+  <dialog class="ShortcutsDialog go-Modal go-Modal--sm js-modal">
+    <form method="dialog">
+      <div class="go-Modal-header">
+        <h2>Keyboard shortcuts</h2>
+        <button
+          class="go-Button go-Button--inline"
+          type="button"
+          data-modal-close
+          data-gtmc="modal button"
+          aria-label="Close"
+        >
+          <img
+            class="go-Icon"
+            height="24"
+            width="24"
+            src="../../static/shared/icon/close_gm_grey_24dp.svg"
+            alt=""
+          />
+        </button>
+      </div>
+      <div class="go-Modal-body">
+        <table>
+          <tbody>
+            <tr><td class="ShortcutsDialog-key">
+              <strong>?</strong></td><td> : This menu</td>
+            </tr>
+            <tr><td class="ShortcutsDialog-key">
+              <strong>/</strong></td><td> : Search site</td>
+            </tr>
+            <tr><td class="ShortcutsDialog-key">
+              <strong>f</strong> or <strong>F</strong></td><td> : Jump to</td>
+            </tr>
+            <tr>
+              <td class="ShortcutsDialog-key"><strong>y</strong> or <strong>Y</strong></td>
+              <td> : Canonical URL</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="go-Modal-actions">
+        <button class="go-Button" data-test-id="close-dialog">Close</button>
+      </div>
+    </form>
+  </dialog>
+
+    
+    
+    
+  
+  <div class="js-canonicalURLPath" data-canonical-url-path="/github.com/Jiang-Gianni/notes-golang@v0.0.0" hidden></div>
+  <div class="js-playgroundVars" data-modulepath="github.com/Jiang-Gianni/notes-golang" data-version="v0.0.0" hidden></div>
+  <script>
+    loadScript('/static/frontend/unit/main/main.js')
+  </script>
+
+  <script>
+    loadScript('/static/frontend/unit/unit.js')
+  </script>
+
+  </body>
+</html>
