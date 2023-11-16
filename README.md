@@ -41,7 +41,7 @@ Random Go notes
 	- [**JSON Marshal and Unmarshal** *(100 Go Mistakes #77)*](#json-marshal-and-unmarshal-100-go-mistakes-77)
 	- [**SQL Connection** *(100 Go Mistakes #78)*](#sql-connection-100-go-mistakes-78)
 	- [**Testing: parallel shuffle flags** *(100 Go Mistakes #84)*](#testing-parallel-shuffle-flags-100-go-mistakes-84)
-	- [**Reduce allocations** *(100 Go Mistakes #96)*](#reduce-allocations-100-go-mistakes-96)
+	- [**Reduce allocations** *(100 Go Mistakes #96 and go-perfbook)*](#reduce-allocations-100-go-mistakes-96-and-go-perfbook)
 
 
 
@@ -976,7 +976,7 @@ go test -shuffle=YOUR_SEED_VALUE -v .
 
 
 
-## **Reduce allocations** *(100 Go Mistakes #96)*
+## **Reduce allocations** *(100 Go Mistakes #96 and go-perfbook)*
 
 
 * Prefere share down approach to prevent auto escape to the heap
@@ -993,8 +993,11 @@ type Reader interface {
 }
 ```
 
-
-* Use `string(yourByteSlice)` to query a `map[string]any`
+* Allow passing in buffers so caller can reuse and slice can be modified in place
+* use error variables instead of errors.New() / fmt.Errorf() at call site (performance or style? interface requires pointer, so it escapes to heap anyway)
+* Use strconv instead of fmt if possible
+* Use `strings.EqualFold(str1, str2)` instead of `strings.ToLower(str1) == strings.ToLower(str2)` or `strings.ToUpper(str1) == strings.ToUpper(str2)` to efficiently compare strings if possible.
+* Use `string(yourByteSlice)` to access a `map[string]any`
 * Use `sync.Pool` to reuse already allocated memory
 
 
