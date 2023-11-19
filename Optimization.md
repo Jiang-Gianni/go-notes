@@ -51,6 +51,7 @@ Scan a slice by keeping track of an offset
 ## Reading materials
 * https://dave.cheney.net/high-performance-go-workshop/dotgo-paris.html
 * https://users.ece.cmu.edu/~franzf/papers/gttse07.pdf
+* https://smallmemory.charlesweir.com/book.html
 
 
 ## Tools

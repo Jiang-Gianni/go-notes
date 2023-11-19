@@ -42,6 +42,8 @@ Random Go notes
 	- [**SQL Connection** *(100 Go Mistakes #78)*](#sql-connection-100-go-mistakes-78)
 	- [**Testing: parallel shuffle flags** *(100 Go Mistakes #84)*](#testing-parallel-shuffle-flags-100-go-mistakes-84)
 	- [**Reduce allocations** *(100 Go Mistakes #96 and go-perfbook)*](#reduce-allocations-100-go-mistakes-96-and-go-perfbook)
+	- [**Exhaust http.Response** *Efficient Go Chapter 11*](#exhaust-httpresponse-efficient-go-chapter-11)
+	- [**Pre-Allocate** *Efficient Go Chapter 11*](#pre-allocate-efficient-go-chapter-11)
 
 
 
@@ -1015,3 +1017,49 @@ type Reader interface {
 		//
 	}
 ```
+
+
+## **Exhaust http.Response** *Efficient Go Chapter 11*
+
+The [Documentation](https://pkg.go.dev/net/http#Client.Do) states that *If the Body is not both read to EOF and closed, the Client's underlying RoundTripper (typically Transport) may not be able to re-use a persistent TCP connection to the server for a subsequent "keep-alive" request.*
+
+
+If not read then it is good practice to discard the response body like shown in https://github.com/efficientgo/core/blob/v1.0.0-rc.2/errcapture/do.go#L39 using `io.Copy(io.Discard, resp.Body)`.
+
+Also close http client connections with:
+
+```go
+	c := http.Client{}
+	defer c.CloseIdleConnections()
+```
+
+
+
+
+## **Pre-Allocate** *Efficient Go Chapter 11*
+
+If the size of a slice is known it is better to allocate the needed memory at the beginning. `append` will re-allocate the memory in case the size is going to exceed the slice capacity.
+
+```go
+func ReadAll1(r io.Reader, size int) ([]byte, error) {
+	buf := bytes.Buffer{}
+	buf.Grow(size)
+	n, err := io.Copy(&buf, r)
+	return buf.Bytes()[:n], err
+}
+```
+
+```go
+func ReadAll2(r io.Reader, size int) ([]byte, error) {
+	buf := make([]byte, size)
+	n, err := io.ReadFull(r, buf)
+	if err == io.EOF {
+		err = nil
+	}
+	return buf[:n], err
+}
+```
+
+Both `ReadAll1` and `ReadAll2` are faster than the [`io.ReadAll`](https://pkg.go.dev/io#ReadAll) from the standard library but the byte slice size must be known.
+
+An example is extracting the [`Content-Length`](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Length) header from an http response to preallocate the slice needed to read the body
