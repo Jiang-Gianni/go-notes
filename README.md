@@ -44,6 +44,9 @@ Random Go notes
 	- [**Reduce allocations** *(100 Go Mistakes #96 and go-perfbook)*](#reduce-allocations-100-go-mistakes-96-and-go-perfbook)
 	- [**Exhaust http.Response** *Efficient Go Chapter 11*](#exhaust-httpresponse-efficient-go-chapter-11)
 	- [**Pre-Allocate** *Efficient Go Chapter 11*](#pre-allocate-efficient-go-chapter-11)
+	- [**Check Function type for Testing**](#check-function-type-for-testing)
+	- [**Cleanup function for Testing**](#cleanup-function-for-testing)
+	- [**Test Coverage**](#test-coverage)
 
 
 
@@ -981,7 +984,7 @@ go test -shuffle=YOUR_SEED_VALUE -v .
 ## **Reduce allocations** *(100 Go Mistakes #96 and go-perfbook)*
 
 
-* Prefere share down approach to prevent auto escape to the heap
+* Prefer share down approach to prevent auto escape to the heap
 
 ```go
 // Share down
@@ -1063,3 +1066,72 @@ func ReadAll2(r io.Reader, size int) ([]byte, error) {
 Both `ReadAll1` and `ReadAll2` are faster than the [`io.ReadAll`](https://pkg.go.dev/io#ReadAll) from the standard library but the byte slice size must be known.
 
 An example is extracting the [`Content-Length`](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Length) header from an http response to preallocate the slice needed to read the body
+
+
+
+
+## [**Check Function type for Testing**](https://www.youtube.com/watch?v=TGg6cc0QCzw&t=30m)
+
+Write a function type with the inputs that match the output signature of the function to test + `*testing.T`
+
+
+```go
+func DoStuff(i int) (int, error)
+type checkDoStuff func(int, error, *testing.T)
+func hasError(want error) checkDoStuff {
+	return func(_ int, got error, t *testing.T) {
+		t.Helper()
+		if want != got {
+			t.Errorf("Expected error %v, got: %v", want, got)
+		}
+	}
+}
+checks := func(cs ...checkDoStuff) []checkDoStuff { return cs }
+```
+
+This makes table test more readable.
+
+```go
+	testCases := []struct {
+		name   string
+		input  int
+		checks []checkDoStuff
+	}{
+		{
+			name: "invalid input",
+			input: -1,
+			checks: checks(hasError(ErrInvalidInput)),
+		},
+	}
+```
+
+
+## [**Cleanup function for Testing**](https://www.youtube.com/watch?v=8hQG7QlcLBk&t=18m15s)
+
+Make the function that prepares the test also return a cleanup function that can be defer called.
+
+```go
+func testTempFile(t *testing.T) (string, func()) {
+	t.Helper()
+	tf, err := os.CreateTemp("", "test")
+	if err != nil {
+		t.Fatalf("err: %s", err)
+	}
+	tf.Close()
+	return tf.Name(), func() { os.Remove(tf.Name()) }
+}
+func TestThing(t *testing.T) {
+	tf, tfclose := testTempFile(t)
+	defer tfclose()
+	//...
+}
+```
+
+
+## [**Test Coverage**](https://www.youtube.com/watch?v=ndmB0bj7eyw&t=4m50s)
+
+```bash
+go test -coverprofile=cover.out ./...
+go tool cover -func=cover.out
+go tool cover -html=cover.out -o=cover.html
+```
