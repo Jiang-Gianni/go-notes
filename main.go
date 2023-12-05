@@ -10,7 +10,20 @@ import (
 )
 
 func main() {
+	myInt := 1234
+	r := &Record{MyField: &myInt}
+	fmt.Printf("%#v\n", r)
+}
 
+type Record struct {
+	MyField *int
+}
+
+func (r *Record) GoString() string {
+	return fmt.Sprintf(
+		"&main.Record{MyField: func(v int) *int { return &v }(%v)}",
+		*r.MyField,
+	)
 }
 
 type Event struct {
