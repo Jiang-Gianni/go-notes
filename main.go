@@ -11,6 +11,7 @@ import (
 
 func main() {
 	myInt := 1234
+
 	r := &Record{MyField: &myInt}
 	fmt.Printf("%#v\n", r)
 }
