@@ -1,0 +1,2 @@
+[62010] 2023/12/26 22:48:18.357558 [DBG] Trapped "interrupt" signal
+[62010] 2023/12/26 22:48:18.357617 [INF] Server Exiting..
