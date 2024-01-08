@@ -1,5 +1,6 @@
 Performance and resourse usage, some are not strictly Go related
 
+- [**Default case with sleep in a select statement**](#default-case-with-sleep-in-a-select-statement)
 - [**Substring and memory leaks** *(100 Go Mistakes #41)*](#substring-and-memory-leaks-100-go-mistakes-41)
 - [**Nil Channel** *(100 Go Mistakes #66)*](#nil-channel-100-go-mistakes-66)
 - [**time.After memory leaks** *(100 Go Mistakes #76)*](#timeafter-memory-leaks-100-go-mistakes-76)
@@ -17,6 +18,10 @@ Performance and resourse usage, some are not strictly Go related
 - [Tools](#tools)
 - [Examples](#examples)
 
+
+## [**Default case with sleep in a select statement**](https://www.youtube.com/watch?v=19bxBMPOlyA&t=13m10s)
+
+Consider using a `time.Sleep` in the default case of a select statement (with multiple channel reads/writes cases) to avoid unnecessary computation checks
 
 ## **Substring and memory leaks** *(100 Go Mistakes #41)*
 
