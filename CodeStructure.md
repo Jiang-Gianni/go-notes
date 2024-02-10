@@ -10,16 +10,52 @@ Code structure and patterns
 
 ## [**Main abstraction**](https://www.youtube.com/watch?v=IV0wrVb31Pg&t=10m40s)
 
-Create a `run` function that handles all the initial settings and returns an error in case of failure (avoid multiple repeated error handling).
+https://grafana.com/blog/2024/02/09/how-i-write-http-services-in-go-after-13-years/#func-main-only-calls-run
+
+Create a `run` function that handles all the initial settings and returns an error in case of failure. This avoids multiple repeated error handling in case they need to be handled the same way.
 
 ```go
 func main() {
-	if err := run(); err != nil {
-		log.Println("error :", err)
+	ctx := context.Background()
+	ctx, cancel := signal.NotifyContext(ctx, os.Interrupt)
+	defer cancel()
+	if err := run(ctx, os.Stdout, os.Args); err != nil {
+		fmt.Fprintf(os.Stderr, "%s\n", err)
 		os.Exit(1)
 	}
 }
+
+func run(ctx context.Context, w io.Writer, args []string) error {
+	// ...
+}
 ```
+
+Passing `io.Writer`, `io.Reader` as input to the `run` enables more parallel testing.
+
+This can also be applied to flags and environment variables:
+
+```go
+args := []string{
+	"myapp",
+	"--out", outFile,
+	"--fmt", "markdown",
+}
+go run(ctx, args, etc.)
+```
+
+```go
+getenv := func(key string) string {
+	switch key {
+	case "MYAPP_FORMAT":
+		return "markdown"
+	case "MYAPP_TIMEOUT":
+		return "5s"
+	default:
+		return ""
+}
+go run(ctx, args, getenv)
+```
+
 
 ## [**Configuration**](https://www.youtube.com/watch?v=IV0wrVb31Pg&t=15m)
 

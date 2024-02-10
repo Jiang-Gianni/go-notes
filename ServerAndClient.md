@@ -11,6 +11,8 @@ Related to http servers and clients.
 - [**Headers against CSRF**](#headers-against-csrf)
 - [**SQL Connection** *(100 Go Mistakes #78)*](#sql-connection-100-go-mistakes-78)
 - [**Exhaust http.Response** *Efficient Go Chapter 11*](#exhaust-httpresponse-efficient-go-chapter-11)
+- [**Encoding and Decoding**](#encoding-and-decoding)
+- [**Validating data**](#validating-data)
 
 
 ## [**ShutDown**](https://www.youtube.com/watch?v=YF1qSfkDGAQ&list=PL4WJSMupJdF8WPlGJQy4nlvWVWIPv7c3B&t=25m45s)
@@ -194,3 +196,56 @@ Also close http client connections with:
 	c := http.Client{}
 	defer c.CloseIdleConnections()
 ```
+
+
+## [**Encoding and Decoding**](https://grafana.com/blog/2024/02/09/how-i-write-http-services-in-go-after-13-years/#handle-decodingencoding-in-one-place)
+
+Using Generics:
+
+```go
+func encode[T any](w http.ResponseWriter, r *http.Request, status int, v T) error {
+	w.WriteHeader(status)
+	w.Header().Set("Content-Type", "application/json")
+	if err := json.NewEncoder(w).Encode(v); err != nil {
+		return fmt.Errorf("encode json: %w", err)
+	}
+	return nil
+}
+
+func decode[T any](r *http.Request) (T, error) {
+	var v T
+	if err := json.NewDecoder(r.Body).Decode(&v); err != nil {
+		return v, fmt.Errorf("decode json: %w", err)
+	}
+	return v, nil
+}
+```
+
+## [**Validating data**](https://grafana.com/blog/2024/02/09/how-i-write-http-services-in-go-after-13-years/#validating-data)
+
+```go
+// Validator is an object that can be validated.
+type Validator interface {
+	// Valid checks the object and returns any
+	// problems. If len(problems) == 0 then
+	// the object is valid.
+	Valid(ctx context.Context) (problems map[string]string)
+}
+```
+
+The implementation of the function `Valid(ctx context.Context) (problems map[string]string)` will check the validations (examples: max length, not null, range etc.).
+
+```go
+func decodeValid[T Validator](r *http.Request) (T, map[string]string, error) {
+	var v T
+	if err := json.NewDecoder(r.Body).Decode(&v); err != nil {
+		return v, nil, fmt.Errorf("decode json: %w", err)
+	}
+	if problems := v.Valid(r.Context()); len(problems) > 0 {
+		return v, problems, fmt.Errorf("invalid %T: %d problems", v, len(problems))
+	}
+	return v, nil, nil
+}
+```
+
+The returned map will return the field name as the key and the validation error as the value. If `problems` is nil then `len(problems)` returns 0.

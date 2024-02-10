@@ -3,6 +3,7 @@ Testing
 - [**Testing: parallel shuffle flags** *(100 Go Mistakes #84)*](#testing-parallel-shuffle-flags-100-go-mistakes-84)
 - [**Check Function type for Testing**](#check-function-type-for-testing)
 - [**Cleanup function for Testing**](#cleanup-function-for-testing)
+- [**t.Cleanup**](#tcleanup)
 - [**Test Coverage**](#test-coverage)
 - [**Test Tags**](#test-tags)
 
@@ -96,6 +97,56 @@ func TestThing(t *testing.T) {
 	tf, tfclose := testTempFile(t)
 	defer tfclose()
 	//...
+}
+```
+
+## [**t.Cleanup**](https://stackoverflow.com/questions/61609085/what-is-useful-for-t-cleanup)
+
+Use `t.Cleanup` to register a cleanup function that will be executed when the test ends.
+
+The following test doesn't work because sub test 1 and 2 are run in parallel, so the main test returns and calls `cleanup()`
+
+```go
+func TestSomething(t *testing.T){
+   setup()
+   defer cleanup()
+   t.Run("parallel subtest 1", func(t *testing.T){
+      t.Parallel()
+      (...)
+   })
+   t.Run("parallel subtest 2", func(t *testing.T){
+      t.Parallel()
+      (...)
+   })
+}
+```
+
+By using `t.Cleanup` the registered function is called only when the test ends.
+
+```go
+func TestSomething(t *testing.T){
+   setup()
+   t.Cleanup(cleanup)
+   t.Run("parallel subtest 1", func(t *testing.T){
+      t.Parallel()
+      (...)
+   })
+   t.Run("parallel subtest 2", func(t *testing.T){
+      t.Parallel()
+      (...)
+   })
+}
+```
+
+For example, to test a server:
+
+```go
+func Test(t *testing.T) {
+	ctx := context.Background()
+	ctx, cancel := context.WithCancel(ctx)
+	t.Cleanup(cancel)
+	go run(ctx)
+	// test code goes here
 }
 ```
 
