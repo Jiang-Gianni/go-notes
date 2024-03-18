@@ -26,7 +26,6 @@ func Benchmark_Add_Inline(b *testing.B) {
 }
 
 var x2, y2, r2 float64
-var add_NotInlined Add
 
 func Benchmark_Add_NotInlined(b *testing.B) {
 	for i := 0; i < b.N; i++ {

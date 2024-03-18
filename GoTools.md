@@ -117,6 +117,46 @@ If `profile.TraceProfile` then a `trace.out` file is generated which can be anal
 go tool trace trace.out
 ```
 
+Other tool: https://gotraceui.dev/
+
+Go 1.22.1 introduced the FlightRecorder (see https://go.dev/blog/execution-traces-2024) in the golang.org/x/exp/trace package with a lower overhead
+
+```go
+package main
+
+import (
+	"bytes"
+	"log"
+	"os"
+
+	"golang.org/x/exp/trace"
+)
+
+func main() {
+	if err := run(); err != nil {
+		log.Fatal(err)
+	}
+}
+
+func run() error {
+	t := trace.NewFlightRecorder()
+	if err := t.Start(); err != nil {
+		return err
+	}
+	var slice []int
+	for i := 0; i < 1000; i++ {
+		slice = append(slice, i)
+	}
+	var b bytes.Buffer
+	_, err := t.WriteTo(&b)
+	if err != nil {
+		return err
+	}
+	return os.WriteFile("trace.out", b.Bytes(), 0o755)
+}
+
+```
+
 
 
 

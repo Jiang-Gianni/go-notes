@@ -10,6 +10,7 @@ Concurrency
 - [**Broadcast**](#broadcast)
 - [**Prime number**](#prime-number)
 - [**Worker Pool Semaphore pattern**](#worker-pool-semaphore-pattern)
+- [**Timer**](#timer)
 
 
 ## [**wg.Add**](https://www.storj.io/blog/production-concurrency)
@@ -231,3 +232,8 @@ func main() {
 	}
 }
 ```
+
+
+## **Timer**
+
+https://blogtitle.github.io/go-advanced-concurrency-patterns-part-2-timers/
