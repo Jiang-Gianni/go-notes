@@ -11,6 +11,7 @@ Concurrency
 - [**Prime number**](#prime-number)
 - [**Worker Pool Semaphore pattern**](#worker-pool-semaphore-pattern)
 - [**Timer**](#timer)
+- [**Channel: for loop vs select**](#channel-for-loop-vs-select)
 
 
 ## [**wg.Add**](https://www.storj.io/blog/production-concurrency)
@@ -237,3 +238,28 @@ func main() {
 ## **Timer**
 
 https://blogtitle.github.io/go-advanced-concurrency-patterns-part-2-timers/
+
+
+## [**Channel: for loop vs select**](https://www.youtube.com/watch?v=VrNmkRAuF9s&list=PL4WJSMupJdF8WPlGJQy4nlvWVWIPv7c3B&t=900s)
+
+The **for** loop is faster. It only checks a single channel.
+
+**select** has more contention.
+
+```go
+go func(){
+	for range b.ch {
+
+	}
+}()
+
+go func(){
+	for {
+		select {
+			case <-b.ch:
+			case <-b.close:
+				return
+		}
+	}
+}()
+```
