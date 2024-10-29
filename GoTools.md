@@ -106,6 +106,62 @@ func main() {
 }
 ```
 
+**runtime/pprof** package can also be used:
+
+```go
+package main
+
+import (
+	"fmt"
+	"math/rand"
+	"os"
+	"runtime/pprof"
+	"time"
+)
+
+func generateData() []int {
+	data := make([]int, 1000000)
+	for i := range data {
+		data[i] = rand.Intn(1000)
+	}
+	return data
+}
+func processCPUIntensive(data []int) {
+	sum := 0
+	for _, num := range data {
+		sum += num
+	}
+	fmt.Println("Sum:", sum)
+}
+func processMemoryIntensive(data []int) {
+	for i := range data {
+		data[i] *= 2
+	}
+}
+func main() {
+	f, err := os.Create("profile.prof")
+	if err != nil {
+		fmt.Println("Error creating profile file:", err)
+		return
+	}
+	defer f.Close()
+
+	if err := pprof.StartCPUProfile(f); err != nil {
+		fmt.Println("Error starting CPU profiling:", err)
+		return
+	}
+	defer pprof.StopCPUProfile()
+
+	data := generateData()
+	processCPUIntensive(data)
+	processMemoryIntensive(data)
+
+	time.Sleep(3 * time.Second)
+	fmt.Println("Profile data written to profile.prof")
+}
+```
+
+
 It creates a `mem.pprof` file which can be analyzed on a local server by running:
 
 ```bash
