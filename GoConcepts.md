@@ -10,6 +10,7 @@ Go concepts and syntax
 - [Interface compile time check](#interface-compile-time-check)
 - [**Reflect to assign value**](#reflect-to-assign-value)
 - [**Generics Constraints** *(100 Go Mistakes #9)*](#generics-constraints-100-go-mistakes-9)
+- [**Comparing structs**](#comparing-structs)
 
 
 ## **Integer literals** *(100 Go Mistakes #17)*
@@ -248,3 +249,40 @@ func getKeys[K customConstraint, V any](m map[K]V) []V {
 
 * | is the union operator
 * ~int and ~string include all the types whose underlying type is an int or a string
+
+
+## **Comparing structs**
+
+Two structs are equal if all the corresponding fields of both are equal. Thus, it is possible to compare structs without being able to directly access their fields from outside the package where the struct is defined.
+
+```go
+// type.go
+package dt
+
+type Type struct {
+	name string
+}
+
+func Hello(name string) Type {
+	return Type{name: name}
+}
+
+// main.go
+package main
+
+import (
+	"fmt"
+
+	"github.com/Jiang-Gianni/notes-golang/dt"
+)
+
+func main() {
+	a := dt.Hello("world")
+	b := dt.Hello("world")
+	fmt.Println(a == b) // Prints true
+}
+```
+
+Some Go types, like slices, maps, and functions, are inherently
+non-comparable and will raise a compilation error if we attempt to
+compare Go structs containing them.

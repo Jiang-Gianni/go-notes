@@ -1,14 +1,13 @@
 package main
 
 import (
-	"time"
+	"fmt"
+
+	"github.com/Jiang-Gianni/notes-golang/dt"
 )
 
 func main() {
-	tm := time.NewTimer(1)
-	tm.Reset(100 * time.Millisecond)
-	<-tm.C
-	if !tm.Stop() {
-		<-tm.C
-	}
+	a := dt.Hello("world")
+	b := dt.Hello("world")
+	fmt.Println(a == b)
 }
